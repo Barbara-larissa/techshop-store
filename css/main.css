@@ -13,8 +13,10 @@
 @import url("components/footer.css");
 @import url("components/hero.css");
 @import url("components/product-card.css");
+@import url("components/cart.css");
 @import url("components/modal.css");
 @import url("components/forms.css");
+@import url("components/benefits.css");
 
 /* Layout e estrutura */
 @import url("layout.css");
@@ -24,3 +26,4 @@
 
 /* Responsivo (deve vir por último) */
 @import url("responsive.css");
+

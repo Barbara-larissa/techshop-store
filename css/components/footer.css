@@ -2,6 +2,13 @@
    FOOTER - Rodapé
    ======================================== */
 
+.footer__container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1.5rem; /* 👈 resolve o “colado na parede” */
+}
+
+
 .footer {
 	background: var(--gray-800);
 	color: white;
@@ -28,13 +35,11 @@
 	flex-direction: column;
 	gap: 0.5rem;
 }
-
 .footer__link {
 	color: var(--gray-300);
 	font-size: 0.875rem;
-	transition: color 0.2s;
+	transition: all 0.3s ease;
 }
-
 .footer__link:hover {
 	color: var(--primary);
 	padding-left: 0.25rem;
@@ -85,13 +90,79 @@
 	padding-top: 1.5rem;
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
-	flex-wrap: wrap;
-	gap: 1rem;
+	text-align: center;
 }
-
 .footer__copyright {
 	color: var(--gray-400);
 	font-size: 0.875rem;
+}
+
+
+
+
+
+/* ========================================
+   NEWSLETTER
+   ======================================== */
+
+.footer__newsletter-form {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: 1rem;
+}
+
+.footer__newsletter-input {
+	flex: 1;
+	padding: 0.6rem 0.8rem;
+	border-radius: var(--radius);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: transparent;
+	color: white;
+	font-size: 0.875rem;
+}
+
+.footer__newsletter-input::placeholder {
+	color: var(--gray-400);
+}
+
+/* botão SEM duplicar sistema */
+.footer__newsletter-btn {
+	padding: 0.6rem 1rem;
+	border-radius: var(--radius);
+	background: var(--primary);
+	color: white;
+	font-size: 0.875rem;
+	border: none;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.footer__newsletter-btn:hover {
+	background: var(--primary-dark);
+}
+
+/* ========================================
+   PAGAMENTOS
+   ======================================== */
+
+.footer__payment-methods {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.footer__payment-icon {
+	background: rgba(255, 255, 255, 0.1);
+	padding: 0.4rem 0.6rem;
+	border-radius: var(--radius);
+	font-size: 1rem;
+}
+
+.section__footer {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+	margin-bottom: 3rem; 
 }

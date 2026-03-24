@@ -1,0 +1,76 @@
+/* ========================================
+   BENEFITS - Seção de benefícios
+   ======================================== */
+
+.benefits {
+	background: var(--gray-100);
+	padding: 5rem 0; /* 👈 espaço em cima e embaixo */
+}
+
+/* CONTAINER (evita ficar colado nas laterais) */
+.benefits .container {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+
+/* GRID */
+.benefits__grid {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(180px, 1fr));
+	gap: 1.5rem;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+/* CARD */
+.benefit {
+	background: white;
+	padding: 1rem;
+	border-radius: var(--radius);
+	text-align: center;
+	transition: all 0.3s ease;
+	border: 1px solid var(--gray-200);
+}
+
+/* HOVER */
+.benefit:hover {
+	transform: translateY(-5px);
+	box-shadow: var(--shadow-lg);
+}
+
+/* ÍCONE */
+.benefit__icon {
+	margin-bottom: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* TÍTULO */
+.benefit__title {
+	font-size: 0.9rem;
+	font-weight: 600;
+	margin-bottom: 0.25rem;
+	color: var(--gray-900);
+}
+
+/* TEXTO */
+.benefit__text {
+	font-size: 0.75rem;
+	color: var(--gray-500);
+}
+
+/* PAGAMENTOS */
+.benefit__payments {
+	display: flex;
+	justify-content: center;
+	gap: 0.4rem;
+	margin-top: 0.5rem;
+}
+
+.benefit__payments span {
+	background: var(--gray-100);
+	padding: 0.25rem 0.4rem;
+	border-radius: var(--radius);
+	font-size: 0.9rem;
+}

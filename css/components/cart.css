@@ -1,0 +1,124 @@
+/* ========================================
+   CARRINHO LATERAL (GAVETA)
+   ======================================== */
+
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Começa escondido à direita */
+    width: 100%;
+    height: 100vh;
+    z-index: 5000; /* Fica por cima de tudo */
+    display: flex;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Quando o JS adiciona a classe .active */
+.cart-drawer.active {
+    right: 0;
+}
+
+/* Fundo escurecido (Overlay) */
+.cart-drawer__overlay {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px); /* Efeito de desfoque chique */
+}
+
+/* Painel Branco do Conteúdo */
+.cart-drawer__content {
+    width: 380px;
+    max-width: 85%;
+    background: #ffffff;
+    height: 100%;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho do Carrinho */
+.cart-drawer__header {
+    padding: 25px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-drawer__header h3 {
+    font-size: 1.4rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.cart-drawer__close {
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.2s;
+}
+
+.cart-drawer__close:hover {
+    color: #ff6b00; /* Laranja TechShop */
+}
+
+/* Área da Lista de Itens */
+.cart-drawer__items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-empty-message {
+    text-align: center;
+    color: #999;
+    margin-top: 60px;
+    font-style: italic;
+}
+
+/* Rodapé com Total e Botão */
+.cart-drawer__footer {
+    padding: 25px 20px;
+    background: #fdfdfd;
+    border-top: 2px solid #f0f0f0;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+#cartTotalValue {
+    color: #ff6b00;
+}
+
+/* Botão Finalizar Compra */
+.btn-checkout {
+    width: 100%;
+    padding: 16px;
+    background: #ff6b00;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.btn-checkout:hover {
+    background: #e66000;
+    transform: translateY(-2px);
+}
+
+/* Trava o scroll do site quando o carrinho abre */
+body.modal-open {
+    overflow: hidden;
+}

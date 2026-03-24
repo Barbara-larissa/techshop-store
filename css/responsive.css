@@ -163,3 +163,37 @@
 		width: 100%;
 	}
 }
+
+
+
+/* ========================================
+   ACRÉSCIMO: RESPONSIVO DOS CARDS DE BENEFÍCIOS
+   ======================================== */
+
+@media (max-width: 480px) {
+    /* Faz o menu aparecer quando estiver ativo */
+    .header__nav.active {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 80%;
+        height: 100vh;
+        background: white;
+        z-index: 999;
+        padding: 2rem;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    }
+
+    .header__overlay.active {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 998;
+    }
+}

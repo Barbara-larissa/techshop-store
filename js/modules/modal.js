@@ -1,148 +1,119 @@
 // ========================================
-// MODAL.JS - Sistema de Modais
+// 1. SISTEMA BASE DE MODAIS (Mensagens)
 // ========================================
+class ModalSystem {
+    constructor() {
+        this.modals = new Map();
+        this.init();
+    }
 
-class Modal {
-	constructor() {
-		this.modals = new Map();
-		this.init();
-	}
+    init() {
+        document.addEventListener("click", (e) => {
+            // Fecha se clicar no X ou fora da modal (backdrop)
+            if (e.target.closest(".modal__close") || e.target.classList.contains("modal-backdrop")) {
+                const backdrop = e.target.closest(".modal-backdrop");
+                if (backdrop) this.close(backdrop.dataset.modalId);
+            }
+        });
 
-	init() {
-		document.addEventListener("click", (e) => {
-			if (
-				e.target.classList.contains("modal__close") ||
-				e.target.closest(".modal__close")
-			) {
-				const backdrop = e.target.closest(".modal-backdrop");
-				if (backdrop) this.close(backdrop.dataset.modalId);
-			}
-			if (e.target.classList.contains("modal-backdrop")) {
-				this.close(e.target.dataset.modalId);
-			}
-		});
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") this.closeAll();
+        });
+    }
 
-		document.addEventListener("keydown", (e) => {
-			if (e.key === "Escape") this.closeAll();
-		});
-	}
+    create(options = {}) {
+        const id = `modal-${Date.now()}`;
+        const backdrop = document.createElement("div");
+        backdrop.className = "modal-backdrop";
+        backdrop.dataset.modalId = id;
 
-	create(options = {}) {
-		const {
-			id = `modal-${Date.now()}`,
-			title = "",
-			content = "",
-			size = "md",
-			actions = [],
-			icon = null,
-			iconType = null,
-		} = options;
+        backdrop.innerHTML = `
+            <div class="modal modal--${options.size || 'md'}">
+                <div class="modal__header">
+                    <h3 class="modal__title">${options.title || ''}</h3>
+                    <button class="modal__close" aria-label="Fechar">&times;</button>
+                </div>
+                <div class="modal__body">${options.content || ''}</div>
+            </div>`;
 
-		if (this.modals.has(id)) this.close(id);
+        document.body.appendChild(backdrop);
+        this.modals.set(id, { element: backdrop });
 
-		const backdrop = document.createElement("div");
-		backdrop.className = "modal-backdrop";
-		backdrop.dataset.modalId = id;
+        setTimeout(() => {
+            backdrop.classList.add("active");
+            document.body.classList.add("modal-open");
+        }, 10);
 
-		let iconHTML = "";
-		if (icon) {
-			iconHTML = `<div class="modal__icon ${iconType ? `modal__icon--${iconType}` : ""}">${icon}</div>`;
-		}
+        return id;
+    }
 
-		backdrop.innerHTML = `
-      <div class="modal modal--${size}">
-        ${
-					title
-						? `
-          <div class="modal__header">
-            <h3 class="modal__title">${title}</h3>
-            <button class="modal__close" aria-label="Fechar">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-          </div>
-        `
-						: ""
-				}
-        <div class="modal__body">${iconHTML}${content}</div>
-        ${
-					actions.length
-						? `
-          <div class="modal__footer">
-            ${actions.map((a) => `<button class="btn btn-${a.variant || "primary"}" data-action="${a.label}">${a.label}</button>`).join("")}
-          </div>
-        `
-						: ""
-				}
-      </div>
-    `;
+    close(id) {
+        const modal = this.modals.get(id);
+        if (!modal) return;
+        modal.element.classList.remove("active");
+        setTimeout(() => {
+            modal.element.remove();
+            this.modals.delete(id);
+            if (this.modals.size === 0) document.body.classList.remove("modal-open");
+        }, 300);
+    }
 
-		document.body.appendChild(backdrop);
-
-		actions.forEach((action) => {
-			const btn = backdrop.querySelector(`[data-action="${action.label}"]`);
-			if (btn && action.onClick) {
-				btn.addEventListener("click", () => {
-					action.onClick();
-					this.close(id);
-				});
-			}
-		});
-
-		this.modals.set(id, { element: backdrop });
-
-		setTimeout(() => {
-			backdrop.classList.add("active");
-			document.body.classList.add("modal-open");
-		}, 10);
-
-		return id;
-	}
-
-	close(id) {
-		const modal = this.modals.get(id);
-		if (!modal) return;
-
-		modal.element.classList.remove("active");
-		setTimeout(() => {
-			modal.element.remove();
-			this.modals.delete(id);
-			if (this.modals.size === 0) {
-				document.body.classList.remove("modal-open");
-			}
-		}, 300);
-	}
-
-	closeAll() {
-		this.modals.forEach((_, id) => this.close(id));
-	}
-
-	success(options = {}) {
-		return this.create({
-			...options,
-			icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>',
-			iconType: "success",
-			content: options.content || "Operação realizada com sucesso!",
-		});
-	}
-
-	error(options = {}) {
-		return this.create({
-			...options,
-			icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>',
-			iconType: "error",
-			content: options.content || "Ocorreu um erro. Tente novamente.",
-		});
-	}
-
-	info(options = {}) {
-		return this.create({
-			...options,
-			icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>',
-			iconType: "info",
-			content: options.content || "Informação importante.",
-		});
-	}
+    closeAll() {
+        this.modals.forEach((_, id) => this.close(id));
+    }
 }
+
+// Inicializa o sistema global
+const modalSystem = new ModalSystem();
+
+// ========================================
+// 2. CONTROLE DO MODAL DE LOGIN (Slider)
+// ========================================
+const LoginModal = {
+    open: () => {
+        const auth = document.getElementById("authModal");
+        if (auth) {
+            auth.classList.add("active");
+            document.body.classList.add("modal-open");
+            // Garante que o slider comece no Login
+            document.querySelector('.auth-slider')?.classList.remove("show-register");
+        } else {
+            console.error("ERRO: ID #authModal não encontrado no HTML!");
+        }
+    },
+    close: () => {
+        const auth = document.getElementById("authModal");
+        if (auth) {
+            auth.classList.remove("active");
+            document.body.classList.remove("modal-open");
+        }
+    }
+};
+
+// ========================================
+// 3. ESCUTADOR DE EVENTOS GLOBAL
+// ========================================
+document.addEventListener("click", (e) => {
+    // Abrir Login (Verifica o atributo data-login-btn ou ID)
+    if (e.target.closest('[data-login-btn]') || e.target.id === 'loginBtn') {
+        e.preventDefault();
+        LoginModal.open();
+    }
+
+    // Fechar Login (Clique no X interno ou no overlay cinza)
+    if (e.target.closest('.modal__close') || e.target.classList.contains('modal__overlay')) {
+        LoginModal.close();
+    }
+
+    // Trocar para Cadastro
+    if (e.target.id === 'goToRegister') {
+        e.preventDefault();
+        document.querySelector('.auth-slider')?.classList.add("show-register");
+    }
+
+    // Voltar para Login
+    if (e.target.id === 'goToLogin') {
+        e.preventDefault();
+        document.querySelector('.auth-slider')?.classList.remove("show-register");
+    }
+});

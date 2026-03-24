@@ -8,14 +8,16 @@
 	border-radius: 1rem;
 	overflow: hidden;
 	box-shadow: var(--shadow);
-	transition: all 0.3s;
+	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	display: flex;
 	flex-direction: column;
+	border: 1px solid transparent;
 }
 
 .product-card:hover {
-	box-shadow: var(--shadow-xl);
-	transform: translateY(-8px);
+	transform: translateY(-10px);
+	box-shadow: 0 15px 45px -5px rgba(255, 107, 53, 0.35);
+	border-color: rgba(255, 107, 53, 0.2);
 }
 
 .product-card__badge {
@@ -31,18 +33,12 @@
 	z-index: 2;
 }
 
-.product-card__image-wrapper {
-	position: relative;
-	width: 100%;
-	height: 250px;
-	overflow: hidden;
-	background: var(--gray-50);
-}
-
+/* 🔥 GARANTE QUE IMAGEM SEMPRE APAREÇA */
 .product-card__image {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	display: block;
 	transition: transform 0.3s;
 }
 
@@ -93,23 +89,6 @@
 	overflow: hidden;
 }
 
-.product-card__rating {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-}
-
-.product-card__stars {
-	display: flex;
-	gap: 2px;
-	color: #ffa500;
-}
-
-.product-card__reviews {
-	font-size: 0.875rem;
-	color: var(--gray-400);
-}
-
 .product-card__price-wrapper {
 	display: flex;
 	align-items: center;
@@ -158,4 +137,117 @@
 	color: var(--error);
 	border-color: var(--error);
 	background: rgba(239, 68, 68, 0.1);
+}
+
+/* ===========================
+   CARROSSEL - VISIBILIDADE
+=========================== */
+
+/* 🔥 DEIXA APENAS UMA DEFINIÇÃO */
+.hidden {
+	display: none !important;
+}
+
+/* ===========================
+   WRAPPER DA IMAGEM (CORRIGIDO)
+=========================== */
+
+.product-card__image-wrapper {
+	position: relative;
+	width: 100%;
+	height: 320px;
+	min-height: 320px; /* 🔥 evita altura 0 */
+	overflow: hidden;
+	background-color: #f8fafc;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* ===========================
+   IMAGEM DINÂMICA
+=========================== */
+
+.product-card__image.dynamic {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	padding: 0;
+	transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-card__image.dynamic {
+	transform: scale(1.05);
+}
+
+/* ===========================
+   SETAS
+=========================== */
+
+.product-card__arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(0, 0, 0, 0.4);
+	color: white;
+	border: none;
+	font-size: 1.5rem;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+	z-index: 2;
+}
+
+.product-card__arrow:hover {
+	background: rgba(0, 0, 0, 0.8);
+	transform: translateY(-50%) scale(1.1);
+}
+
+.product-card__arrow.left { left: 10px; }
+.product-card__arrow.right { right: 10px; }
+
+/* ===========================
+   CORES
+=========================== */
+
+.product-card__colors {
+	display: flex;
+	gap: 0.75rem;
+	padding: 0.5rem 0;
+}
+
+.color {
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	cursor: pointer;
+	border: 2px solid #e2e8f0;
+	transition: all 0.2s ease-in-out;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color:hover {
+	transform: scale(1.2);
+}
+
+.color.active {
+	border-color: #2563eb;
+	transform: scale(1.2);
+	outline: 2px solid white;
+	box-shadow: 0 0 0 2px #2563eb;
+}
+
+.color-blue   { background-color: #4a90e2; }
+.color-black  { background-color: #1a1a1a; }
+.color-pink   { background-color: #ff6fcf; }
+.color-silver { background-color: #c0c0c0; }
+
+.color-white { 
+	background-color: #ffffff; 
+	border: 1px solid #e2e8f0; 
 }
