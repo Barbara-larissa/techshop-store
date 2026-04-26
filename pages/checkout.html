@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Tech Shop - Home | As Melhores Ofertas em Tecnologia</title>
+	<meta name="description"
+		content="Turbine seu setup na Tech Shop! Encontre as melhores ofertas em hardware, periféricos gamer e eletrônicos com entrega rápida e preços imbatíveis. Confira!" />
+	<meta name="keywords" content="e-commerce, eletrônicos, hardware, setup gamer, compras online, Londrina" />
+	<meta name="author" content="Tech Shop" />
+
+	<link rel="canonical" href="https://barbaralarissa.github.io/tech-shop/pages/index.html" />
+
+	<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../img/favicon.png" type="image/png">
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://barbaralarissa.github.io/tech-shop/" />
+	<meta property="og:title" content="Tech Shop - As Melhores Ofertas em Tecnologia" />
+	<meta property="og:description"
+		content="Turbine seu setup! Hardware e periféricos com os melhores preços e qualidade garantida." />
+	<meta property="og:image" content="https://barbaralarissa.github.io/tech-shop/img/og-share.png" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Tech Shop - As Melhores Ofertas em Tecnologia" />
+	<meta name="twitter:description"
+		content="Encontre periféricos, hardware e muito mais. Compre com os melhores preços!" />
+	<meta name="twitter:image" content="https://barbaralarissa.github.io/tech-shop/img/og-share.png" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+		rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+	<link rel="stylesheet" href="../css/main.css" />
+	<link rel="stylesheet" href="../css/components/products.css">
+	<link rel="stylesheet" href="../css/components/checkout.css">
+</head>
+
+<body>
+	<header class="header">
+		<div class="header__container">
+			<a href="index.html" class="header__logo">
+				<svg class="header__logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="40" height="40" rx="8" fill="currentColor" />
+					<path d="M12 20L18 26L28 14" stroke="white" stroke-width="3" stroke-linecap="round"
+						stroke-linejoin="round" />
+				</svg>
+				<span>TechShop</span>
+			</a>
+
+			<button class="header__menu-toggle" aria-label="Menu">
+				<span class="header__menu-toggle-bar"></span>
+				<span class="header__menu-toggle-bar"></span>
+				<span class="header__menu-toggle-bar"></span>
+			</button>
+
+			<nav class="header__nav">
+				<ul class="header__menu">
+					<li class="header__menu-item">
+						<a href="index.html" class="header__menu-link active">Home</a>
+					</li>
+
+					<li class="header__menu-item">
+						<a href="about.html" class="header__menu-link active">Sobre Nós </a>
+					</li>
+
+					<li class="header__menu-item">
+						<a href="products.html" class="header__menu-link">Produtos</a>
+					</li>
+					<li class="header__menu-item">
+						<a href="#ofertas" class="header__menu-link">Ofertas</a>
+					</li>
+
+					<li class="header__menu-item header__dropdown">
+						<a href="contact.html" class="header__menu-link">Contato</a>
+					</li>
+
+					<li class="header__menu-item">
+						<a href="faq.html" class="header__menu-link">Dúvidas</a>
+					</li>
+
+					<li class="header__menu-item">
+						<a href="blog.html" class="header__menu-link">Blog</a>
+					</li>
+
+
+					<li class="header__menu-item">
+						<a href="wishlist.html" class="header__menu-link">
+							<i class="fa-solid fa-heart"></i>
+						</a>
+					</li>
+
+					<li id="profileMenuItem" style="display:none;">
+						<a href="profile.html">Perfil</a>
+					</li>
+
+
+				</ul>
+
+				<div class="header__actions">
+					<button class="header__icon-btn" data-login-btn aria-label="Login">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+							<circle cx="12" cy="7" r="4"></circle>
+						</svg>
+					</button>
+					<a href="./cart.html" class="header__icon-btn" aria-label="Carrinho">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="9" cy="21" r="1"></circle>
+							<circle cx="20" cy="21" r="1"></circle>
+							<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+						</svg>
+						<span class="header__cart-badge">0</span>
+					</a>
+				</div>
+			</nav>
+			<div class="header__overlay"></div>
+		</div>
+	</header>
+
+
+	<div class="checkout-wrapper container">
+		<div class="checkout-steps">
+			<h1 class="mb-4">Finalizar Compra</h1>
+
+			<section class="step-card mb-4" id="entrega">
+				<h2 class="h5 mb-3"><i class="fa-solid fa-location-dot"></i> 1. Endereço de Entrega</h2>
+				<div class="row g-3">
+					<div class="col-md-4">
+						<label class="form-label">CEP</label>
+						<input type="text" id="cep" class="form-control" placeholder="00000-000">
+					</div>
+					<div class="col-md-8">
+						<label class="form-label">Endereço</label>
+						<input type="text" id="rua" class="form-control" readonly placeholder="Preencha o CEP">
+					</div>
+					<div class="col-md-3">
+						<label class="form-label">Número</label>
+						<input type="text" id="numero" class="form-control">
+					</div>
+					<div class="col-md-9">
+						<label class="form-label">Complemento</label>
+						<input type="text" id="complemento" class="form-control">
+					</div>
+				</div>
+			</section>
+
+
+		</div>
+
+		<aside class="checkout-sidebar">
+			<div class="summary-sticky card p-4">
+				<h3 class="h5 border-bottom pb-2">Resumo do Pedido</h3>
+				<div id="checkout-list" class="my-3">
+				</div>
+				<div class="summary-totals border-top pt-3">
+					<div class="d-flex justify-content-between mb-2">
+						<span>Frete:</span>
+						<span id="frete-val">R$ 0,00</span>
+					</div>
+					<div class="d-flex justify-content-between h4">
+						<span>Total:</span>
+						<span id="total-final">R$ 0,00</span>
+					</div>
+				</div>
+				<button id="btn-finalizar" class="btn btn-primary w-full mt-4" disabled>
+					CONCLUIR COMPRA
+				</button>
+				<a href="index.html"
+					style="display: block; text-align: center; margin-top: 15px; color: #666; text-decoration: none;">
+					← Voltar para a loja e continuar comprando
+				</a>
+
+
+			</div>
+		</aside>
+	</div>
+
+
+	<footer class="footer">
+		<div class="footer__container">
+			<div class="footer__grid">
+				<div class="footer__column">
+					<div class="footer__logo">TechShop</div>
+					<p class="footer__about">
+						Sua loja online de tecnologia com os melhores produtos e as
+						melhores ofertas.
+					</p>
+					<div class="footer__social">
+						<a href="#" class="footer__social-link" aria-label="Facebook">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+								fill="currentColor">
+								<path
+									d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+							</svg>
+						</a>
+						<a href="#" class="footer__social-link" aria-label="Instagram">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+								fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round">
+								<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+								<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+								<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+							</svg>
+						</a>
+						<a href="#" class="footer__social-link" aria-label="Twitter">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+								fill="currentColor">
+								<path
+									d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+							</svg>
+						</a>
+					</div>
+				</div>
+
+				<div class="footer__column">
+					<h4 class="footer__column-title">Links Rápidos</h4>
+					<ul class="footer__links">
+						<li><a href="index.html" class="footer__link">Home</a></li>
+						<li><a href="products.html" class="footer__link">Produtos</a></li>
+						<li><a href="#ofertas" class="footer__link">Ofertas</a></li>
+						<li><a href="#" class="footer__link">Sobre Nós</a></li>
+					</ul>
+				</div>
+
+				<div class="footer__column">
+					<h4 class="footer__column-title">Ajuda</h4>
+					<ul class="footer__links">
+						<li><a href="#" class="footer__link">FAQ</a></li>
+						<li><a href="#" class="footer__link">Envio e Entrega</a></li>
+						<li><a href="#" class="footer__link">Política de Devolução</a></li>
+						<li><a href="#" class="footer__link">Rastreamento</a></li>
+					</ul>
+				</div>
+
+				<div class="footer__column">
+					<h4 class="footer__column-title">Newsletter</h4>
+					<p class="footer__about">Receba ofertas exclusivas no seu e-mail</p>
+
+					<form class="footer__newsletter-form" id="newsletterForm">
+						<div class="form__group">
+							<input type="email" id="newsletterEmail" class="footer__newsletter-input"
+								placeholder="Seu e-mail" required />
+						</div>
+
+						<div class="form__group">
+							<div class="footer__terms"
+								style="display: flex; align-items: center; gap: 8px; margin: 10px 0; font-size: 13px;">
+								<input type="checkbox" id="newsletterTerms" required>
+								<label for="newsletterTerms" style="color: #ccc;">Aceito os termos</label>
+							</div>
+						</div>
+
+						<button type="submit" class="footer__newsletter-btn">
+							Inscrever
+						</button>
+
+						<div id="newsletterMessage" style="margin-top: 10px; font-size: 14px; font-weight: bold;"></div>
+					</form>
+				</div>
+			</div>
+			<div class="footer__bottom">
+				<p class="footer__copyright">&copy; 2026 TechShop</p>
+				<span class="footer__reserved">Todos os direitos reservados.</span>
+
+				<div class="footer__payment-methods">
+					<span>Pagamentos:</span>
+					<div class="footer__payment-icon">💳</div>
+					<div class="footer__payment-icon">🏦</div>
+					<div class="footer__payment-icon">📱</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="../js/modules/modal.js"></script>
+	<script src="../js/modules/form-validator.js"></script>
+	<script src="../js/modules/navigation.js"></script>
+	<script src="../js/modules/utils.js"></script>
+	<script src="../js/modules/products-gallery.js"></script>
+	<script src="../js/modules/handlers.js"></script>
+	<script src="../js/modules/carousel.js"></script>
+	<script src="../js/products.js"></script>
+	<script src="../js/app.js"></script>
+</body>
+
+</html>

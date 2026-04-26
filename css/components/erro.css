@@ -1,0 +1,106 @@
+/* erro.css */
+
+/* 1. Layout Principal */
+.error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--bg-body, #f4f7f9); /* Um tom levemente azulado/cinza */
+    padding: 20px;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    background: #ffffff;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* 2. O Mascote (Ilustração) */
+.error-illustration {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+
+.error-illustration img {
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+    /* Aplicando a animação mais viva que você criou */
+    animation: floatMascot 4s ease-in-out infinite;
+    filter: drop-shadow(0 12px 20px rgba(0,0,0,0.1));
+}
+
+/* 3. Textos e Títulos */
+.error-title {
+    font-size: 2rem;
+    color: var(--primary-color, #2c3e50);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.error-message {
+    color: #64748b;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* 4. Navegação e Links */
+.error-nav {
+    margin-top: 30px;
+    border-top: 2px solid #f1f5f9;
+    padding-top: 25px;
+}
+
+.error-nav p {
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.error-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.error-nav a {
+    text-decoration: none;
+    color: var(--primary-color, #3b82f6);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.error-nav a:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+/* 5. Animação de Flutuação com Rotação (A que você escolheu) */
+@keyframes floatMascot {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-12px) rotate(-1.5deg);
+    }
+    75% {
+        transform: translateY(-6px) rotate(1.5deg);
+    }
+}

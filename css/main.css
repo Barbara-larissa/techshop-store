@@ -17,6 +17,14 @@
 @import url("components/modal.css");
 @import url("components/forms.css");
 @import url("components/benefits.css");
+@import url("components/testimonial.css"); 
+@import url("components/erro.css"); 
+@import url("components/faq.css"); 
+@import url("components/checkout.css"); 
+@import url("components/profile.css"); 
+@import url("components/cards-blog.css"); 
+@import url("components/wishlist.css"); 
+
 
 /* Layout e estrutura */
 @import url("layout.css");

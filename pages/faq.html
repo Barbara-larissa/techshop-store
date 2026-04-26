@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>TechShop - Central de Ajuda | FAQ</title>
+
+	<!-- Meta Tags -->
+	<meta name="description" content="Tire suas dúvidas sobre entregas, pagamentos e devoluções na TechShop." />
+	<meta name="author" content="Tech Shop" />
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://googleapis.com" />
+	<link rel="preconnect" href="https://gstatic.com" crossorigin />
+	<link
+		href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+		rel="stylesheet" />
+
+	<!-- Font Awesome (Importante para os ícones funcionarem) -->
+	<link rel="stylesheet" href="https://cloudflare.com">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="../css/main.css" />
+	<link rel="stylesheet" href="../css/components/faq.css">
+</head>
+
+<body>
+
+	<!-- Header / Navigation -->
+	<header class="header">
+		<div class="header__container">
+			<a href="index.html" class="header__logo">
+				<svg class="header__logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="40" height="40" rx="8" fill="currentColor" />
+					<path d="M12 20L18 26L28 14" stroke="white" stroke-width="3" stroke-linecap="round"
+						stroke-linejoin="round" />
+				</svg>
+				<span>TechShop</span>
+			</a>
+
+			<button class="header__menu-toggle" aria-label="Menu">
+				<span class="header__menu-toggle-bar"></span>
+				<span class="header__menu-toggle-bar"></span>
+				<span class="header__menu-toggle-bar"></span>
+			</button>
+
+			<nav class="header__nav">
+				<ul class="header__menu">
+					<li class="header__menu-item">
+						<a href="index.html" class="header__menu-link active">Home</a>
+					</li>
+
+					<li class="header__menu-item">
+						<a href="about.html" class="header__menu-link active">Sobre Nós </a>
+					</li>
+
+					<li class="header__menu-item">
+						<a href="products.html" class="header__menu-link">Produtos</a>
+					</li>
+					<li class="header__menu-item">
+						<a href="#ofertas" class="header__menu-link">Ofertas</a>
+					</li>
+
+					<li class="header__menu-item header__dropdown">
+						<a href="contact.html" class="header__menu-link">Contato</a>
+					</li>
+
+					<li class="header__menu-item">
+						<a href="faq.html" class="header__menu-link">Dúvidas</a>
+					</li>
+
+					<li class="header__menu-item">
+						<a href="blog.html" class="header__menu-link">Blog</a>
+					</li>
+
+
+					<li class="header__menu-item">
+						<a href="wishlist.html" class="header__menu-link">
+							<i class="fa-solid fa-heart"></i>
+						</a>
+					</li>
+
+
+					<li id="profileMenuItem" style="display:none;">
+						<a href="profile.html">Perfil</a>
+					</li>
+
+
+				</ul>
+
+				<div class="header__actions">
+					<button class="header__icon-btn" data-login-btn aria-label="Login">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+							<circle cx="12" cy="7" r="4"></circle>
+						</svg>
+					</button>
+					<a href="./cart.html" class="header__icon-btn" aria-label="Carrinho">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="9" cy="21" r="1"></circle>
+							<circle cx="20" cy="21" r="1"></circle>
+							<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+						</svg>
+						<span class="header__cart-badge">0</span>
+					</a>
+				</div>
+			</nav>
+			<div class="header__overlay"></div>
+		</div>
+	</header>
+
+	<main class="main-content">
+		<section class="faq">
+			<div class="container">
+				<header class="section__header">
+					<h1 class="section__title">Central de Ajuda</h1>
+					<p class="section__description">Como podemos ajudar você hoje?</p>
+				</header>
+
+				<!-- Campo de Busca -->
+				<div class="faq__search-container">
+					<input type="text" id="faqSearch" class="faq__search-input"
+						placeholder="Busque por uma dúvida (ex: entrega)..."
+						aria-label="Buscar nas perguntas frequentes">
+				</div>
+
+				<!-- Navegação por Categorias (Links para Brilho Laranja) -->
+				<nav class="faq__categories-nav">
+					<a href="#envios" class="faq__category-link">Envios</a>
+					<a href="#pagamento" class="faq__category-link">Pagamento</a>
+					<a href="#devolucoes" class="faq__category-link">Devoluções</a>
+				</nav>
+
+				<div id="faqContainer">
+					<!-- Seção: Envios -->
+					<section id="envios" class="faq__section">
+						<h2 class="faq__section-title">Envios</h2>
+						<div class="accordion">
+							<div class="accordion__item">
+								<button class="accordion__header" aria-expanded="false" aria-controls="ans-1">
+									Qual o prazo de entrega para Londrina?
+									<span class="accordion__icon" aria-hidden="true">+</span>
+								</button>
+								<div id="ans-1" class="accordion__content" hidden>
+									<p>Para Londrina e região, o prazo médio é de 1 a 3 dias úteis após a confirmação do
+										pagamento.</p>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- Seção: Pagamento -->
+					<section id="pagamento" class="faq__section">
+						<h2 class="faq__section-title">Pagamento</h2>
+						<div class="accordion">
+							<div class="accordion__item">
+								<button class="accordion__header" aria-expanded="false" aria-controls="ans-2">
+									Quais as formas de pagamento aceitas?
+									<span class="accordion__icon" aria-hidden="true">+</span>
+								</button>
+								<div id="ans-2" class="accordion__content" hidden>
+									<p>Aceitamos PIX com 10% de desconto, Cartão de Crédito em até 12x e Boleto
+										Bancário.</p>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- Seção: Devoluções -->
+					<section id="devolucoes" class="faq__section">
+						<h2 class="faq__section-title">Devoluções</h2>
+						<div class="accordion">
+							<div class="accordion__item">
+								<button class="accordion__header" aria-expanded="false" aria-controls="ans-devolucao">
+									Como solicitar uma troca ou devolução?
+									<span class="accordion__icon" aria-hidden="true">+</span>
+								</button>
+								<div id="ans-devolucao" class="accordion__content" hidden>
+									<p>Você tem até 7 dias corridos após o recebimento para solicitar a devolução pelo
+										nosso portal.</p>
+									<a href="returns.html" class="faq__related-link">Acessar portal de trocas →</a>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</section>
+	</main>
+
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="footer__container">
+			<div class="footer__grid">
+				<div class="footer__column">
+					<div class="footer__logo">TechShop</div>
+					<p class="footer__about">
+						Sua loja online de tecnologia com os melhores produtos e as
+						melhores ofertas.
+					</p>
+					<div class="footer__social">
+						<a href="#" class="footer__social-link" aria-label="Facebook">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+								fill="currentColor">
+								<path
+									d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+							</svg>
+						</a>
+						<a href="#" class="footer__social-link" aria-label="Instagram">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+								fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round">
+								<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+								<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+								<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+							</svg>
+						</a>
+						<a href="#" class="footer__social-link" aria-label="Twitter">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+								fill="currentColor">
+								<path
+									d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+							</svg>
+						</a>
+					</div>
+				</div>
+
+				<div class="footer__column">
+					<h4 class="footer__column-title">Links Rápidos</h4>
+					<ul class="footer__links">
+						<li><a href="index.html" class="footer__link">Home</a></li>
+						<li><a href="products.html" class="footer__link">Produtos</a></li>
+						<li><a href="#ofertas" class="footer__link">Ofertas</a></li>
+						<li><a href="#" class="footer__link">Sobre Nós</a></li>
+					</ul>
+				</div>
+
+				<div class="footer__column">
+					<h4 class="footer__column-title">Ajuda</h4>
+					<ul class="footer__links">
+						<li><a href="#" class="footer__link">FAQ</a></li>
+						<li><a href="#" class="footer__link">Envio e Entrega</a></li>
+						<li><a href="#" class="footer__link">Política de Devolução</a></li>
+						<li><a href="#" class="footer__link">Rastreamento</a></li>
+					</ul>
+				</div>
+
+				<div class="footer__column">
+					<h4 class="footer__column-title">Newsletter</h4>
+					<p class="footer__about">Receba ofertas exclusivas no seu e-mail</p>
+
+					<form class="footer__newsletter-form" id="newsletterForm">
+						<div class="form__group">
+							<input type="email" id="newsletterEmail" class="footer__newsletter-input"
+								placeholder="Seu e-mail" required />
+						</div>
+
+						<div class="form__group">
+							<div class="footer__terms"
+								style="display: flex; align-items: center; gap: 8px; margin: 10px 0; font-size: 13px;">
+								<input type="checkbox" id="newsletterTerms" required>
+								<label for="newsletterTerms" style="color: #ccc;">Aceito os termos</label>
+							</div>
+						</div>
+
+						<button type="submit" class="footer__newsletter-btn">
+							Inscrever
+						</button>
+
+						<div id="newsletterMessage" style="margin-top: 10px; font-size: 14px; font-weight: bold;"></div>
+					</form>
+				</div>
+			</div>
+
+			<div class="footer__bottom">
+				<p class="footer__copyright">&copy; 2026 TechShop</p>
+				<span class="footer__reserved">Todos os direitos reservados.</span>
+
+				<div class="footer__payment-methods">
+					<span>Pagamentos:</span>
+					<div class="footer__payment-icon">💳</div>
+					<div class="footer__payment-icon">🏦</div>
+					<div class="footer__payment-icon">📱</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<div class="ai-assistant show" id="aiAssistant">
+
+		<!-- 💬 BALÃO -->
+		<div class="ai-assistant__bubble" id="aiBubble">
+			Oi, posso ajudar? 👋
+		</div>
+
+		<!-- 🤖 BOTÃO DO ROBÔ -->
+		<button class="ai-assistant__trigger" id="aiAssistantTrigger" type="button">
+			<div class="ai-assistant__badge">IA</div>
+			<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Robot.png"
+				alt="Mascote Robô" width="250" height="250" />
+		</button>
+
+		<!-- 🪟 CHAT -->
+		<div class="ai-assistant__window" id="aiAssistantWindow">
+			<header class="ai-assistant__header">
+				<span>TechBot Online</span>
+				<button class="ai-assistant__close" id="closeAssistant">&times;</button>
+			</header>
+
+			<div class="ai-assistant__messages">
+				<div class="ai-message ai-message--bot">
+					Olá! Como posso ajudar você hoje? 🤖
+				</div>
+			</div>
+
+			<form class="ai-assistant__input-group">
+				<input type="text" placeholder="Escreva sua dúvida..." required>
+				<button type="submit">Enviar</button>
+			</form>
+		</div>
+
+	</div>
+
+
+
+	<script src="../js/modules/modal.js"></script>
+	<script src="../js/modules/form-validator.js"></script>
+	<script src="../js/modules/navigation.js"></script>
+	<script src="../js/modules/utils.js"></script>
+	<script src="../js/modules/handlers.js"></script>
+	<script src="../js/faq.js"></script>
+	<script src="../js/app.js"></script>
+</body>
+
+</html>

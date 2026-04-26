@@ -1,89 +1,306 @@
 /* ========================================
-   HERO - Seção hero da homepage
-   ======================================== */
+   HERO - Seção hero da homepage
+   ======================================== */
 
 .hero {
-	padding: 5rem 0;
-	background: linear-gradient(
-		135deg,
-		var(--gray-50) 0%,
-		white 50%,
-		var(--gray-100) 100%
-	);
+    width: 100vw !important; 
+    position: relative !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    
+    padding: 5rem 0;
+    background: linear-gradient(
+        135deg,
+        var(--gray-50) 0%,
+        white 50%,
+        var(--gray-100) 100%
+    );
+    overflow: hidden;
 }
 
+
 .hero__container {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 4rem;
-	align-items: center;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto !important;
+    padding: 0 2rem;
 }
 
 .hero__content {
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .hero__badge {
-	display: inline-flex;
-	align-items: center;
-	padding: 0.5rem 1rem;
-	background: rgba(255, 107, 53, 0.1);
-	color: var(--primary);
-	font-size: 0.875rem;
-	font-weight: 600;
-	border-radius: 999px;
-	width: fit-content;
-	border: 1px solid rgba(255, 107, 53, 0.2);
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 107, 53, 0.1);
+    color: var(--primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 999px;
+    width: fit-content;
+    border: 1px solid rgba(255, 107, 53, 0.2);
 }
 
 .hero__title {
-	font-size: clamp(2.5rem, 5vw, 4rem);
-	font-weight: 800;
-	line-height: 1.1;
-	margin: 0;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0;
 }
 
 .hero__title-highlight {
-	background: linear-gradient(135deg, var(--primary), var(--secondary));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero__description {
-	font-size: 1.125rem;
-	color: var(--gray-500);
-	line-height: 1.75;
-	max-width: 500px;
-	margin: 0;
+    font-size: 1.125rem;
+    color: var(--gray-500);
+    line-height: 1.75;
+    max-width: 500px;
+    margin: 0;
 }
 
 .hero__actions {
-	display: flex;
-	gap: 1rem;
-	flex-wrap: wrap;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .hero__image {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero__img {
-	width: 100%;
-	border-radius: 1.5rem;
-	box-shadow: var(--shadow-xl);
+    width: 100%;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-xl);
 }
 
 
 
 /* ========================================
-   ADICIONANDO LUZ AO HERO (SEM MUDAR O SEU CÓDIGO)
-   ======================================== */
+   ADICIONANDO LUZ AO HERO (SEM MUDAR O SEU CÓDIGO)
+   ======================================== */
+
+
+.hero__image::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background: var(--primary);
+    filter: blur(80px);
+    opacity: 0.3;
+    z-index: 1;
+    pointer-events: none;
+
+}
+
+
+.hero__img {
+    position: relative;
+    z-index: 2;
+}
+
+.hero__image:hover::before {
+
+    opacity: 0.5;
+
+    transform: scale(1.2);
+
+    transition: all 0.5s ease;
+}
+
+/* 4. Detalhe: Luz no badge flutuante para destacar o desconto */
+.hero__badge-float {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+}
+
+
+/* ========================================
+   ESTILIZAÇÃO DO BADGE FLUTUANTE
+   ======================================== */
+
+.hero__image {
+    position: relative;
+    /* Mantém o badge "preso" à área da imagem */
+    display: inline-block;
+}
+
+.hero__badge-float {
+    position: absolute;
+    /* Posição: movendo para o canto superior direito */
+    top: 25px;
+    right: -15px;
+
+    /* Visual: usando seu laranja padrão */
+    background-color: var(--primary);
+    /* #ff6b35 */
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    font-weight: 800;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+    /* Brilho laranja */
+
+    /* Para dar um charme extra */
+    border: 2px solid white;
+    z-index: 10;
+
+    /* Animação para ele não ficar parado */
+    animation: floatAnimation 4s ease-in-out infinite;
+}
+
+.hero__badge-float-text {
+    display: block;
+    line-height: 1.2;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Animação de flutuação suave */
+@keyframes floatAnimation {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(2deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(-2deg);
+    }
+}
+
+
+
+/* ========================================
+   HERO STATS - Alinhamento e Estilo
+   ======================================== */
+
+.hero__stats {
+    display: flex;
+    /* Coloca um do lado do outro */
+    gap: 2rem;
+    /* Espaço entre os itens */
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gray-200);
+    /* Linha sutil separadora */
+}
+
+.hero__stat {
+    display: flex;
+    flex-direction: column;
+    /* Valor em cima, label embaixo */
+    gap: 0.25rem;
+}
+
+.hero__stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    /* Deixa o número bem forte */
+    color: var(--gray-900);
+    line-height: 1;
+}
+
+.hero__stat-label {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    /* Cor mais suave para o texto */
+    font-weight: 500;
+}
+
+
+
+.hero__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.hero__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 107, 53, 0.1);
+    color: var(--primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 999px;
+    width: fit-content;
+    border: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.hero__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.hero__title-highlight {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero__description {
+    font-size: 1.125rem;
+    color: var(--gray-500);
+    line-height: 1.75;
+    max-width: 500px;
+    margin: 0;
+}
+
+.hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero__image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero__img {
+    width: 100%;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-xl);
+}
+
+
+
+/* ========================================
+   ADICIONANDO LUZ AO HERO (SEM MUDAR O SEU CÓDIGO)
+   ======================================== */
 
 /* 1. Criando a aura de luz atrás da imagem */
 .hero__image::before {
@@ -91,11 +308,16 @@
     position: absolute;
     width: 70%;
     height: 70%;
-    background: var(--primary); /* Usa o seu laranja */
-    filter: blur(80px); /* O efeito de fumaça/luz */
-    opacity: 0.3; /* Deixa a luz suave */
-    z-index: 1; /* Fica atrás da imagem */
-    pointer-events: none; /* Não atrapalha o clique */
+    background: var(--primary);
+    /* Usa o seu laranja */
+    filter: blur(80px);
+    /* O efeito de fumaça/luz */
+    opacity: 0.3;
+    /* Deixa a luz suave */
+    z-index: 1;
+    /* Fica atrás da imagem */
+    pointer-events: none;
+    /* Não atrapalha o clique */
 }
 
 /* 2. Garantindo que a sua imagem fique por cima da luz */
@@ -119,11 +341,12 @@
 
 
 /* ========================================
-   ESTILIZAÇÃO DO BADGE FLUTUANTE
-   ======================================== */
+   ESTILIZAÇÃO DO BADGE FLUTUANTE
+   ======================================== */
 
 .hero__image {
-    position: relative; /* Mantém o badge "preso" à área da imagem */
+    position: relative;
+    /* Mantém o badge "preso" à área da imagem */
     display: inline-block;
 }
 
@@ -131,21 +354,23 @@
     position: absolute;
     /* Posição: movendo para o canto superior direito */
     top: 25px;
-    right: -15px; 
-    
+    right: -15px;
+
     /* Visual: usando seu laranja padrão */
-    background-color: var(--primary); /* #ff6b35 */
+    background-color: var(--primary);
+    /* #ff6b35 */
     color: white;
     padding: 0.8rem 1.2rem;
     border-radius: 12px;
     font-weight: 800;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4); /* Brilho laranja */
-    
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+    /* Brilho laranja */
+
     /* Para dar um charme extra */
     border: 2px solid white;
     z-index: 10;
-    
+
     /* Animação para ele não ficar parado */
     animation: floatAnimation 4s ease-in-out infinite;
 }
@@ -159,49 +384,52 @@
 
 /* Animação de flutuação suave */
 @keyframes floatAnimation {
-    0%, 100% { transform: translateY(0) rotate(2deg); }
-    50% { transform: translateY(-10px) rotate(-2deg); }
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(2deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(-2deg);
+    }
 }
 
 
 
 /* ========================================
-   HERO STATS - Alinhamento e Estilo
-   ======================================== */
+   HERO STATS - Alinhamento e Estilo
+   ======================================== */
 
 .hero__stats {
-    display: flex; /* Coloca um do lado do outro */
-    gap: 2rem;    /* Espaço entre os itens */
+    display: flex;
+    /* Coloca um do lado do outro */
+    gap: 2rem;
+    /* Espaço entre os itens */
     margin-top: 2.5rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--gray-200); /* Linha sutil separadora */
+    border-top: 1px solid var(--gray-200);
+    /* Linha sutil separadora */
 }
 
 .hero__stat {
     display: flex;
-    flex-direction: column; /* Valor em cima, label embaixo */
+    flex-direction: column;
+    /* Valor em cima, label embaixo */
     gap: 0.25rem;
 }
 
 .hero__stat-value {
     font-size: 1.5rem;
-    font-weight: 800; /* Deixa o número bem forte */
+    font-weight: 800;
+    /* Deixa o número bem forte */
     color: var(--gray-900);
     line-height: 1;
 }
 
 .hero__stat-label {
     font-size: 0.875rem;
-    color: var(--gray-500); /* Cor mais suave para o texto */
+    color: var(--gray-500);
+    /* Cor mais suave para o texto */
     font-weight: 500;
-}
-
-/* Ajuste para telas menores (celular) */
-@media (max-width: 640px) {
-    .hero__stats {
-        flex-wrap: wrap; /* Quebra linha se não couber */
-        gap: 1.5rem;
-        justify-content: center; /* Centraliza no mobile */
-        text-align: center;
-    }
 }

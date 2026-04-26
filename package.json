@@ -1,0 +1,26 @@
+{
+  "name": "incubadora",
+  "version": "1.0.0",
+  "description": "E-commerce de tecnologia construído com **HTML5, CSS3 e JavaScript puro (Vanilla JS)**, sem frameworks ou dependências externas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Barbara-larissa/incubadora-nivel-1-estagiario.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Barbara-larissa/incubadora-nivel-1-estagiario/issues"
+  },
+  "homepage": "https://github.com/Barbara-larissa/incubadora-nivel-1-estagiario#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mercadopago": "^2.12.0"
+  }
+}

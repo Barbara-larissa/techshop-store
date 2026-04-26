@@ -73,3 +73,7 @@ class Navigation {
 		});
 	}
 }
+// No final do arquivo navigation.js
+document.addEventListener("DOMContentLoaded", () => {
+    new Navigation();
+});

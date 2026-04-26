@@ -1,124 +1,344 @@
 /* ========================================
-   CARRINHO LATERAL (GAVETA)
+   DESIGN SYSTEM & TOKENS (REFINADO)
    ======================================== */
+:root {
+    /* Palette - Mais profunda e menos saturada para elegância */
+    --primary: #ff6b35;
+    --primary-light: #ff8b61;
+    --primary-dark: #d44d1c;
+    --secondary: #0f172a; /* Azul meia-noite para contraste */
 
-.cart-drawer {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Começa escondido à direita */
-    width: 100%;
-    height: 100vh;
-    z-index: 5000; /* Fica por cima de tudo */
+    /* Neutros - Escala de cinzas frios (Professional Slate) */
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --gray-900: #0f172a;
+
+    /* Semântica */
+    --success: #10b981;
+    --error: #ef4444;
+    
+    /* Superfícies e Elevação */
+    --bg-main: #fbfcfd;
+    --glass: rgba(255, 255, 255, 0.8);
+    --radius: 12px;
+    --radius-sm: 8px;
+    
+    /* Shadows - Camadas de profundidade realistas */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+
+    /* Transições */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===========================
+   RESET & BASE
+=========================== */
+body {
+    background-color: var(--bg-main);
+    color: var(--gray-700);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+/* ===========================
+   TÍTULO REFINADO
+=========================== */
+.cart-title-section {
     display: flex;
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Quando o JS adiciona a classe .active */
-.cart-drawer.active {
-    right: 0;
-}
-
-/* Fundo escurecido (Overlay) */
-.cart-drawer__overlay {
-    flex: 1;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(3px); /* Efeito de desfoque chique */
-}
-
-/* Painel Branco do Conteúdo */
-.cart-drawer__content {
-    width: 380px;
-    max-width: 85%;
-    background: #ffffff;
-    height: 100%;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-}
-
-/* Cabeçalho do Carrinho */
-.cart-drawer__header {
-    padding: 25px 20px;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #eee;
+    gap: 12px;
+    margin-bottom: 40px;
 }
 
-.cart-drawer__header h3 {
-    font-size: 1.4rem;
-    color: #333;
-    font-weight: 700;
-}
-
-.cart-drawer__close {
-    background: none;
-    border: none;
-    font-size: 2.2rem;
-    line-height: 1;
-    cursor: pointer;
-    color: #999;
-    transition: color 0.2s;
-}
-
-.cart-drawer__close:hover {
-    color: #ff6b00; /* Laranja TechShop */
-}
-
-/* Área da Lista de Itens */
-.cart-drawer__items {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-}
-
-.cart-empty-message {
-    text-align: center;
-    color: #999;
-    margin-top: 60px;
-    font-style: italic;
-}
-
-/* Rodapé com Total e Botão */
-.cart-drawer__footer {
-    padding: 25px 20px;
-    background: #fdfdfd;
-    border-top: 2px solid #f0f0f0;
-}
-
-.cart-total {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
+.cart-title-section h1 {
+    font-size: 2.25rem;
+    letter-spacing: -0.025em;
+    color: var(--gray-900);
     font-weight: 800;
 }
 
-#cartTotalValue {
-    color: #ff6b00;
+.badge-count {
+    background: var(--gray-100);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border: 1px solid var(--gray-200);
 }
 
-/* Botão Finalizar Compra */
+/* ===========================
+   LAYOUT (SISTEMA DE GRADES)
+=========================== */
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 32px;
+    align-items: start;
+}
+
+
+/* ===========================
+   CARDS (GLASSMORPHISM SUAVE)
+=========================== */
+.card, .summary-card {
+    background: #ffffff;
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-200);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.card:hover, .summary-card:hover {
+    box-shadow: var(--shadow-xl);
+    border-color: var(--gray-300);
+}
+
+.card-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray-400);
+    margin-bottom: 2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===========================
+   ITENS DO CARRINHO (ESTILO LISTA)
+=========================== */
+.cart-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    background: var(--gray-50);
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.cart-item:hover {
+    background: #fff;
+    border-color: var(--gray-200);
+    transform: scale(1.01);
+}
+
+.cart-item__img {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-sm);
+    background: #fff;
+    padding: 8px;
+    object-fit: contain;
+}
+
+.cart-item__info h4 {
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 4px;
+}
+
+/* ===========================
+   INPUTS & BOTÕES (NÍVEL PREMIUM)
+=========================== */
+input {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+input:focus {
+    background: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+    outline: none;
+}
+
 .btn-checkout {
     width: 100%;
-    padding: 16px;
-    background: #ff6b00;
+    background: var(--primary);
     color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 1rem;
+    padding: 18px;
+    border-radius: var(--radius);
     font-weight: 700;
-    text-transform: uppercase;
+    font-size: 1.1rem;
+    border: none;
     cursor: pointer;
-    transition: transform 0.2s, background 0.3s;
+    box-shadow: 0 4px 14px 0 rgba(255, 107, 53, 0.39);
+    transition: var(--transition);
 }
 
 .btn-checkout:hover {
-    background: #e66000;
+    background: var(--primary-dark);
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.45);
 }
 
-/* Trava o scroll do site quando o carrinho abre */
-body.modal-open {
-    overflow: hidden;
+.btn-checkout:active { transform: translateY(0); }
+
+/* ===========================
+   RESUMO E TOTAL
+=========================== */
+.summary-details {
+    margin-top: 24px;
+    background: var(--gray-50);
+    padding: 20px;
+    border-radius: var(--radius-sm);
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: var(--gray-500);
+}
+
+.total-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #fff; /* Linha de separação negativa */
+}
+
+.total-amount {
+    font-size: 2rem;
+    color: var(--gray-900);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+}
+
+/* ===========================
+   HISTÓRICO (TIMELINE STYLE)
+=========================== */
+.history-item {
+    border-left: 4px solid var(--gray-200);
+    background: #fff;
+    margin-left: 10px;
+    padding: 20px;
+    position: relative;
+}
+
+.history-item::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 24px;
+    width: 14px;
+    height: 14px;
+    background: var(--gray-200);
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+.history-item:hover {
+    border-left-color: var(--primary);
+}
+
+.history-item:hover::before {
+    background: var(--primary);
+}
+
+.order-status {
+    background: #ecfdf5;
+    color: #065f46;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+}
+
+
+
+
+/* 1. O Card (Container) */
+.cart-item {
+    position: relative !important;
+    padding-right: 55px !important; /* Aumentei o respiro para o botão não encostar no preço */
+}
+
+/* 2. O Botão Estilizado (Sempre à vista) */
+.cart-item .cart-item__remove {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    
+    background-color: #fee2e2 !important;
+    color: #dc2626 !important;
+    border: 1px solid #fecaca !important;
+
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px !important;
+    font-weight: 800;
+    cursor: pointer;
+    z-index: 20;
+}
+/* 3. Efeito de Hover (Para dar feedback de clique) */
+.cart-item button:hover {
+    background-color: #dc2626 !important; /* Inverte no hover para destacar a ação */
+    color: white !important;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+}
+
+
+
+.cart-qtd-wrapper {
+    margin-top: 10px;
+}
+
+.cart-qtd-label {
+    font-size: 0.85rem;
+    color: #777;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.cart-qtd-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cart-qtd-box button {
+    font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.cart-qtd-box input {
+    width: 50px;
+    height: 35px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
 }

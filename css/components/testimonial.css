@@ -1,0 +1,174 @@
+.testimonials {
+    /* Técnica para escapar do container pai */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    padding: 100px 0;
+    /* Removido o padding lateral para não somar com o 100vw */
+    background: linear-gradient(135deg, #f7f9f9, #eef2f3);
+    overflow: hidden;
+}
+
+.testimonials h2 {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #111;
+}
+
+/* container */
+.testimonial-container {
+    max-width: 1200px;
+    margin: 0 auto !important;
+    /* Força a centralização no meio da tela total */
+    overflow: visible;
+    /* Deixamos visible para não cortar a sombra dos cards */
+    padding: 0 20px;
+}
+
+/* track */
+.testimonial-track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.6s ease;
+    will-change: transform;
+}
+
+/* card - MOBILE FIRST */
+.testimonial-card {
+    flex: 0 0 100%;
+    /* No celular, ele ocupa 100% da largura disponível */
+    background: #fff;
+    padding: 28px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s ease;
+    position: relative;
+    box-sizing: border-box;
+    /* ESSENCIAL: impede o padding de aumentar o card */
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+
+/* efeito hover */
+.testimonial-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* estrelinhas */
+.rating {
+    color: #ffc107;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+/* texto */
+blockquote {
+    margin: 0;
+}
+
+blockquote p {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* linha separadora */
+figcaption {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* avatar */
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f1f1f1;
+}
+
+/* autor */
+.author-info strong {
+    font-size: 0.95rem;
+    color: #111;
+}
+
+.author-info span {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* botões */
+.carousel-controls {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* botão moderno */
+.control-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: #111;
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* hover */
+.control-btn:hover {
+    background: #ff4d00;
+    transform: scale(1.15);
+}
+
+/* efeito de clique */
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+/* efeito geral */
+.testimonial-track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.6s ease;
+}
+
+/* todos começam mais apagados */
+.testimonial-card {
+    opacity: 0.5;
+    transform: scale(0.9);
+    transition: all 0.4s ease;
+}
+
+/* card ativo (destaque) */
+.testimonial-card.active {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* leve destaque lateral */
+.testimonial-card.active:hover {
+    transform: scale(1.05);
+}

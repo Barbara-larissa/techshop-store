@@ -1,5 +1,5 @@
 // ========================================
-// 1. SISTEMA BASE DE MODAIS (Mensagens)
+// 1. SISTEMA BASE DE MODAIS
 // ========================================
 class ModalSystem {
     constructor() {
@@ -9,21 +9,41 @@ class ModalSystem {
 
     init() {
         document.addEventListener("click", (e) => {
-            // Fecha se clicar no X ou fora da modal (backdrop)
-            if (e.target.closest(".modal__close") || e.target.classList.contains("modal-backdrop")) {
-                const backdrop = e.target.closest(".modal-backdrop");
+            const target = e.target;
+
+            // Fechar modal dinâmico
+            if (target.closest(".modal__close") && target.closest(".modal-backdrop")) {
+                const backdrop = target.closest(".modal-backdrop");
                 if (backdrop) this.close(backdrop.dataset.modalId);
+                return;
+            }
+
+            if (target.classList.contains("modal-backdrop")) {
+                this.close(target.dataset.modalId);
+                return;
+            }
+
+            // Fechar modal login
+            if (target.closest('.modal__close') || target.classList.contains('modal__overlay')) {
+                const auth = document.getElementById("authModal");
+                if (auth?.classList.contains('active')) {
+                    LoginModal.close();
+                }
             }
         });
 
         document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") this.closeAll();
+            if (e.key === "Escape") {
+                this.closeAll();
+                LoginModal.close();
+            }
         });
     }
 
     create(options = {}) {
         const id = `modal-${Date.now()}`;
         const backdrop = document.createElement("div");
+
         backdrop.className = "modal-backdrop";
         backdrop.dataset.modalId = id;
 
@@ -31,10 +51,11 @@ class ModalSystem {
             <div class="modal modal--${options.size || 'md'}">
                 <div class="modal__header">
                     <h3 class="modal__title">${options.title || ''}</h3>
-                    <button class="modal__close" aria-label="Fechar">&times;</button>
+                    <button class="modal__close">&times;</button>
                 </div>
                 <div class="modal__body">${options.content || ''}</div>
-            </div>`;
+            </div>
+        `;
 
         document.body.appendChild(backdrop);
         this.modals.set(id, { element: backdrop });
@@ -50,11 +71,18 @@ class ModalSystem {
     close(id) {
         const modal = this.modals.get(id);
         if (!modal) return;
+
         modal.element.classList.remove("active");
+
         setTimeout(() => {
             modal.element.remove();
             this.modals.delete(id);
-            if (this.modals.size === 0) document.body.classList.remove("modal-open");
+
+            const authActive = document.getElementById("authModal")?.classList.contains('active');
+
+            if (this.modals.size === 0 && !authActive) {
+                document.body.classList.remove("modal-open");
+            }
         }, 300);
     }
 
@@ -63,11 +91,11 @@ class ModalSystem {
     }
 }
 
-// Inicializa o sistema global
 const modalSystem = new ModalSystem();
 
+
 // ========================================
-// 2. CONTROLE DO MODAL DE LOGIN (Slider)
+// 2. CONTROLE DO MODAL LOGIN
 // ========================================
 const LoginModal = {
     open: () => {
@@ -75,10 +103,6 @@ const LoginModal = {
         if (auth) {
             auth.classList.add("active");
             document.body.classList.add("modal-open");
-            // Garante que o slider comece no Login
-            document.querySelector('.auth-slider')?.classList.remove("show-register");
-        } else {
-            console.error("ERRO: ID #authModal não encontrado no HTML!");
         }
     },
     close: () => {
@@ -90,30 +114,60 @@ const LoginModal = {
     }
 };
 
+
 // ========================================
-// 3. ESCUTADOR DE EVENTOS GLOBAL
+// 3. EVENTOS PRINCIPAIS (TUDO CENTRALIZADO)
 // ========================================
 document.addEventListener("click", (e) => {
-    // Abrir Login (Verifica o atributo data-login-btn ou ID)
-    if (e.target.closest('[data-login-btn]') || e.target.id === 'loginBtn') {
+    const target = e.target;
+
+    // 🔓 ABRIR LOGIN
+    if (target.closest('[data-login-btn]') || target.id === 'loginBtn' || target.closest('.user-icon')) {
         e.preventDefault();
         LoginModal.open();
+        return;
     }
 
-    // Fechar Login (Clique no X interno ou no overlay cinza)
-    if (e.target.closest('.modal__close') || e.target.classList.contains('modal__overlay')) {
-        LoginModal.close();
-    }
-
-    // Trocar para Cadastro
-    if (e.target.id === 'goToRegister') {
+    // 🔁 TROCAR PARA CADASTRO
+    if (target.id === 'goToRegister') {
         e.preventDefault();
+
         document.querySelector('.auth-slider')?.classList.add("show-register");
+
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        target.classList.add('active');
+
+        return;
     }
 
-    // Voltar para Login
-    if (e.target.id === 'goToLogin') {
+    // 🔁 VOLTAR PARA LOGIN
+    if (target.id === 'goToLogin' || target.id === 'tabLogin') {
         e.preventDefault();
+
         document.querySelector('.auth-slider')?.classList.remove("show-register");
+
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        target.classList.add('active');
+
+        return;
+    }
+
+    // 👁️ MOSTRAR/OCULTAR SENHA (FORMA PROFISSIONAL)
+    const eye = target.closest(".toggle-password");
+    if (eye) {
+        const inputId = eye.getAttribute("data-target");
+        const input = document.getElementById(inputId);
+
+        if (!input) return;
+
+        if (input.type === "password") {
+            input.type = "text";
+            eye.classList.replace("fa-eye", "fa-eye-slash");
+        } else {
+            input.type = "password";
+            eye.classList.replace("fa-eye-slash", "fa-eye");
+        }
+
+        return;
     }
 });

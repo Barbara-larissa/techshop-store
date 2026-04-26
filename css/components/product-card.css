@@ -1,253 +1,523 @@
 /* ========================================
-   PRODUCT CARD - Cards de produtos
+   PRODUCT CARD - ORGANIZADO / LIMPO
+   Mantido visual original + corrigido fotos
    ======================================== */
 
+/* ========================================
+   CARD BASE
+======================================== */
+.products-grid {
+    display: grid;
+    /* O card terá no mínimo 250px e no máximo 1 fração do espaço */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
 .product-card {
-	position: relative;
-	background: white;
-	border-radius: 1rem;
-	overflow: hidden;
-	box-shadow: var(--shadow);
-	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	display: flex;
-	flex-direction: column;
-	border: 1px solid transparent;
+    position: relative;
+    background: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .product-card:hover {
-	transform: translateY(-10px);
-	box-shadow: 0 15px 45px -5px rgba(255, 107, 53, 0.35);
-	border-color: rgba(255, 107, 53, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 45px -5px rgba(255, 107, 53, 0.35);
+    border-color: rgba(255, 107, 53, 0.2);
 }
+
+.btn-icon {
+    display: none;
+}
+/* ========================================
+   BADGE
+======================================== */
 
 .product-card__badge {
-	position: absolute;
-	top: 1rem;
-	left: 1rem;
-	background: var(--error);
-	color: white;
-	padding: 0.5rem 0.75rem;
-	border-radius: var(--radius);
-	font-size: 0.75rem;
-	font-weight: 700;
-	z-index: 2;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 5;
+
+    background: var(--error);
+    color: #fff;
+
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius);
+
+    font-size: 0.75rem;
+    font-weight: 700;
 }
 
-/* 🔥 GARANTE QUE IMAGEM SEMPRE APAREÇA */
+/* ========================================
+   IMAGEM (CORRIGIDO)
+======================================== */
+.product-card__image-wrapper, 
+.product-card__image-container {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    height: 220px !important; /* Altura fixa para as fotos aparecerem */
+    background: #f8fafc;
+    overflow: hidden;
+    flex-shrink: 0; /* Impede o flex de amassar a imagem */
+}
+
+/* Força a imagem a aparecer e ocupar o espaço correto */
 .product-card__image {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	display: block;
-	transition: transform 0.3s;
+    width: auto !important;
+    height: auto !important;
+    max-width: 90% !important;
+    max-height: 90% !important;
+    object-fit: contain !important;
+    display: block !important; /* Garante que não herde 'none' de algum lugar */
 }
-
 .product-card:hover .product-card__image {
-	transform: scale(1.1);
+    transform: scale(1.1);
+}
+/* ========================================
+   QUICK VIEW
+======================================== */
+
+.product-card .product-card__quick-view {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10;
 }
 
-.product-card__quick-view {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	opacity: 0;
-	visibility: hidden;
-	transition: all 0.3s;
-}
-
+/* Garante que o botão apareça no hover do card */
 .product-card:hover .product-card__quick-view {
-	opacity: 1;
-	visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
+
+/* ========================================
+   CONTENT
+======================================== */
 
 .product-card__content {
-	padding: 1.25rem;
-	display: flex;
-	flex-direction: column;
-	gap: 0.75rem;
-	flex: 1;
+    padding: 1.25rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
 }
 
 .product-card__category {
-	font-size: 0.75rem;
-	color: var(--gray-400);
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-	font-weight: 600;
+    font-size: 0.75rem;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
 }
 
 .product-card__name {
-	font-size: 1.125rem;
-	font-weight: 600;
-	color: var(--gray-900);
-	line-height: 1.3;
-	margin: 0;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    line-height: 1.3;
+    margin: 0;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    min-height: 46px;
 }
 
+/* ========================================
+   IMAGEM CARDS PRDUTOS 
+======================================== */
+/* Efeito de hover na imagem */
+.cart-item:hover .cart-item__img img {
+    transform: scale(1.1); /* Zoom leve */
+    filter: brightness(1.1) contrast(1.1); /* Aumenta a nitidez */
+    transition: var(--transition); /* Usa a transição que você já definiu no seu root */
+}
+
+
+
+/* ========================================
+   PREÇOS
+======================================== */
+
 .product-card__price-wrapper {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    margin-top: auto;
 }
 
 .product-card__original-price {
-	font-size: 0.875rem;
-	color: var(--gray-400);
-	text-decoration: line-through;
+    font-size: 0.875rem;
+    color: var(--gray-400);
+    text-decoration: line-through;
 }
 
 .product-card__price {
-	font-size: 1.5rem;
-	font-weight: 700;
-	color: var(--primary);
-	font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    font-family: "Poppins", sans-serif;
 }
 
+/* ========================================
+   FOOTER
+======================================== */
+
 .product-card__footer {
-	padding: 1.25rem;
-	padding-top: 0;
-	display: flex;
-	gap: 0.5rem;
+    padding: 1.25rem;
+    padding-top: 0;
+
+    display: flex;
+    gap: 0.5rem;
+
+    margin-top: auto;
 }
 
 .product-card__btn {
-	flex: 1;
+    flex: 1;
 }
 
+/* ========================================
+   FAVORITO
+======================================== */
+
 .product-card__favorite {
-	width: 44px;
-	height: 44px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: 2px solid var(--gray-200);
-	border-radius: var(--radius);
-	color: var(--gray-400);
-	transition: all 0.2s;
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+
+    color: var(--gray-400);
+    transition: 0.2s;
 }
 
 .product-card__favorite:hover,
 .product-card__favorite.active {
-	color: var(--error);
-	border-color: var(--error);
-	background: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+    border-color: var(--error);
+    background: rgba(239, 68, 68, 0.1);
 }
 
-/* ===========================
-   CARROSSEL - VISIBILIDADE
-=========================== */
 
-/* 🔥 DEIXA APENAS UMA DEFINIÇÃO */
-.hidden {
-	display: none !important;
+
+.product-card__arrow.right {
+    right: 10px;
 }
 
-/* ===========================
-   WRAPPER DA IMAGEM (CORRIGIDO)
-=========================== */
-
-.product-card__image-wrapper {
-	position: relative;
-	width: 100%;
-	height: 320px;
-	min-height: 320px; /* 🔥 evita altura 0 */
-	overflow: hidden;
-	background-color: #f8fafc;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-/* ===========================
-   IMAGEM DINÂMICA
-=========================== */
-
-.product-card__image.dynamic {
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
-	padding: 0;
-	transition: transform 0.5s ease;
-}
-
-.product-card:hover .product-card__image.dynamic {
-	transform: scale(1.05);
-}
-
-/* ===========================
-   SETAS
-=========================== */
-
-.product-card__arrow {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	background: rgba(0, 0, 0, 0.4);
-	color: white;
-	border: none;
-	font-size: 1.5rem;
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: all 0.3s ease;
-	z-index: 2;
-}
-
-.product-card__arrow:hover {
-	background: rgba(0, 0, 0, 0.8);
-	transform: translateY(-50%) scale(1.1);
-}
-
-.product-card__arrow.left { left: 10px; }
-.product-card__arrow.right { right: 10px; }
-
-/* ===========================
+/* ========================================
    CORES
-=========================== */
+======================================== */
 
 .product-card__colors {
-	display: flex;
-	gap: 0.75rem;
-	padding: 0.5rem 0;
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
 }
 
 .color {
-	width: 22px;
-	height: 22px;
-	border-radius: 50%;
-	cursor: pointer;
-	border: 2px solid #e2e8f0;
-	transition: all 0.2s ease-in-out;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+
+    transition: 0.2s;
 }
 
-.color:hover {
-	transform: scale(1.2);
+.color:hover,
+.color.active {
+    transform: scale(1.2);
 }
 
 .color.active {
-	border-color: #2563eb;
-	transform: scale(1.2);
-	outline: 2px solid white;
-	box-shadow: 0 0 0 2px #2563eb;
+    border-color: #2563eb;
+    outline: 2px solid #fff;
+    box-shadow: 0 0 0 2px #2563eb;
 }
 
-.color-blue   { background-color: #4a90e2; }
-.color-black  { background-color: #1a1a1a; }
-.color-pink   { background-color: #ff6fcf; }
-.color-silver { background-color: #c0c0c0; }
+.color-blue   { background: #4a90e2; }
+.color-black  { background: #1a1a1a; }
+.color-pink   { background: #ff6fcf; }
+.color-silver { background: #c0c0c0; }
+.color-white  { background: #fff; }
 
-.color-white { 
-	background-color: #ffffff; 
-	border: 1px solid #e2e8f0; 
+/* ========================================
+   UTILITÁRIOS
+======================================== */
+
+.hidden {
+    display: none !important;
+}
+
+/* ========================================
+   BREADCRUMB
+======================================== */
+
+.breadcrumb-nav {
+    padding: 12px 0;
+}
+
+.breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-link {
+    text-decoration: none;
+    color: #666;
+    transition: 0.2s;
+}
+
+.breadcrumb-link:hover {
+    color: #000;
+}
+
+.breadcrumb-separator {
+    display: flex;
+    align-items: center;
+    color: #aaa;
+}
+
+.breadcrumb-item.active {
+    font-weight: 600;
+    color: #000;
+}
+
+/* ========================================
+   FILTROS DESKTOP
+======================================== */
+
+#toggleFilters,
+.sidebar-mobile-header {
+    display: none !important;
+}
+
+.btn-close-sidebar {
+    background: #f5f5f5;
+    border: none;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+}
+.filter-price {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#clearFilters {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: transparent;
+    color: #374151;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+#clearFilters:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+    color: #111827;
+}
+
+#clearFilters:active {
+    transform: scale(0.98);
+}
+
+
+
+
+
+
+/* ========================================
+   TOOLBAR
+======================================== */
+
+.products-toolbar__actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.select-wrapper {
+    position: relative;
+    width: auto;
+    min-width: 200px;
+}
+
+.form__select {
+    width: 100%;
+
+    padding: 12px 40px 12px 16px;
+
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--gray-700);
+
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+
+    cursor: pointer;
+    appearance: none;
+    transition: 0.3s;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C2.185 5.355 2.403 5 2.808 5h10.384a.408.408 0 0 1 .325.658l-4.796 5.482a.5.5 0 0 1-.724 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+.form__select:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+.form__select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255,107,53,.15);
+}
+
+
+
+
+/* 1. Alinhamento e Trilha Infinita */
+.offers__grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: visible; /* Mudamos para visible para não prender o conteúdo */
+    gap: 25px;
+    padding: 20px 5px;
+    
+    /* O SEGREDO: Faz o container ter a largura real de todos os cards */
+    width: max-content !important; 
+    min-width: 100%;
+}
+
+/* 2. Container de Máscara (Onde os cards passam) */
+.featured-carousel {
+    position: relative;
+    padding: 0 80px; /* Espaço para as setas não ficarem em cima dos cards */
+    
+    /* Isso aqui cria a "janela" que esconde o que está fora da tela */
+    overflow: hidden; 
+}
+
+
+
+
+
+
+/* ========================================
+   SETAS CARROCEL OFERTAS TECHSHOP - LIMPO
+   ======================================== */
+
+/* 1. Usamos a tag 'section' junto com a classe para ganhar força */
+section.offers .carousel-controls-centro {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin: 10px 0 30px 0;
+    padding: 0;
+}
+
+/* 2. Estilo das Setas Laranja */
+section.offers .carousel-nav-btn {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    background-color: #ff6b35; 
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 107, 53, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Efeito de Hover */
+section.offers .carousel-nav-btn:hover {
+    background-color: #e65a2d;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(255, 107, 53, 0.4);
+}
+
+/* 3. Ajuste do Grid e Alinhamento dos Cards */
+section.offers .offers__grid {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content; 
+    gap: 20px;
+    /* Alinha os cards verticalmente caso tenham tamanhos de texto diferentes */
+    align-items: stretch; 
+}
+
+/* Garante que os cards não esmaguem */
+section.offers .product-card {
+    flex: 0 0 280px; /* Mantém largura fixa de 280px no carrossel */
+    min-width: 280px;
 }

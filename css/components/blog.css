@@ -1,0 +1,525 @@
+/* ============================================================
+   TECHSHOP - BLOG ULTRAPREMIUM (LARGURA TOTAL & UI/UX)
+   ============================================================ */
+
+/* 1. CONFIGURAÇÕES DE LARGURA TOTAL (O HACK DO LOCALHOST) */
+.blog-hero, 
+.blog-categories, 
+.blog-newsletter {
+    width: 100vw !important;
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. HERO DO BLOG - ESTILO DARK MODERN */
+.blog-hero {
+    background: radial-gradient(circle at top left, #1e293b, #0f172a) !important;
+    padding: 120px 0 100px !important;
+    color: #ffffff !important;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blog-badge {
+    background: rgba(249, 115, 22, 0.2);
+    color: #f97316; /* Laranja da sua marca */
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.blog-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    max-width: 850px;
+    margin: 0 auto 25px;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.blog-subtitle {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+/* 3. BARRA DE BUSCA (ESTILO APPLE) */
+.blog-search {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.blog-search input {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    flex: 1;
+    outline: none;
+}
+
+.blog-search button {
+    background: #f97316;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.blog-search button:hover {
+    background: #ea580c;
+    transform: scale(1.05);
+}
+
+/* 4. GRID DE POSTS (UI REFINADA) */
+.blog-posts {
+    background: #fdfdfd;
+    padding: 100px 0;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.post-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.post-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.post-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.post-card:hover img {
+    transform: scale(1.05);
+}
+
+.post-content {
+    padding: 30px;
+}
+
+.post-content span {
+    color: #f97316;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.post-content h3 {
+    font-size: 1.4rem;
+    color: #0f172a;
+    margin: 15px 0;
+    line-height: 1.3;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 15px;
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.read-more:hover {
+    color: #f97316;
+    padding-left: 5px;
+}
+
+/* 5. CATEGORIAS (GLASS) */
+.categories-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+
+.category-btn {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-btn.active, .category-btn:hover {
+    background: #0f172a;
+    color: #fff;
+    border-color: #0f172a;
+}
+
+/* 6. CONTAINER DE SEGURANÇA (O CORAÇÃO DO SITE) */
+.container {
+    max-width: 1240px !important;
+    margin: 0 auto !important;
+    padding: 0 25px !important;
+}
+
+
+/* ============================================================
+   TECHSHOP - BLOG FEATURED (SUBSTITUIÇÃO COMPLETA)
+   ============================================================ */
+
+/* 1. RESET DA SEÇÃO PARA LARGURA TOTAL */
+.blog-featured {
+    width: 100vw !important;
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: #f8fafc !important; /* Fundo cinza claro que preenche tudo */
+    margin: 0 !important;
+    padding: 80px 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden;
+}
+
+/* 2. RE-CENTRALIZANDO O CONTEÚDO DENTRO DA SEÇÃO */
+.blog-featured .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    /* Reseta o efeito de expansão apenas para o conteúdo interno */
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+}
+
+/* 3. GRID DO DESTAQUE */
+.featured-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* 4. ESTILIZAÇÃO PREMIUM DOS ELEMENTOS */
+.featured-image img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.featured-tag {
+    display: inline-block;
+    color: #f97316;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.featured-content h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.featured-content p {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* 5. BOTÃO LER ARTIGO */
+.blog-btn {
+    display: inline-block;
+    background: #0f172a;
+    color: #fff;
+    padding: 16px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.blog-btn:hover {
+    background: #f97316;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(249, 115, 22, 0.2);
+}
+
+
+/* ============================================================
+   TECHSHOP - ÚLTIMOS ARTIGOS (LARGURA TOTAL)
+   ============================================================ */
+.blog-posts {
+    width: 100vw !important;
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 80px 0 !important;
+    box-sizing: border-box !important;
+}
+
+.blog-posts .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+/* GRID DE CARDS */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* ESTILO DOS CARDS (POST-CARD) */
+.post-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.post-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 24px;
+}
+
+.post-content span {
+    color: #f97316;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.post-content h3 {
+    font-size: 1.25rem;
+    margin: 12px 0;
+    color: #0f172a;
+}
+
+/* ============================================================
+   TECHSHOP - NEWSLETTER (LARGURA TOTAL)
+   ============================================================ */
+.blog-newsletter {
+    width: 100vw !important;
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: #0f172a !important; /* Azul escuro igual ao Header */
+    margin: 0 !important;
+    padding: 80px 0 !important;
+    color: white;
+    text-align: center;
+}
+
+.newsletter-form-blog {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.newsletter-form-blog input {
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    width: 100%;
+    max-width: 350px;
+}
+
+.newsletter-form-blog button {
+    background: #f97316;
+    color: white;
+    border: none;
+    padding: 0 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+
+
+
+/* ============================================================
+   TECHSHOP - POST CONTENT (ESTILO LIMPO & PREMIUM)
+   ============================================================ */
+
+/* 1. CONTAINER DO ARTIGO */
+article.post-content {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+    color: #334155;
+    line-height: 1.8;
+}
+
+/* 2. IMAGEM PRINCIPAL */
+article.post-content img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 24px;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* 3. TIPOGRAFIA (TÍTULOS) */
+article.post-content h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+article.post-content h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 40px 0 20px;
+}
+
+/* 4. TABELA DE COMPARAÇÃO (SWITCHES) */
+.comparison-table-wrapper {
+    overflow-x: auto;
+    margin: 30px 0;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.comparison-table th {
+    background: #f8fafc;
+    padding: 15px;
+    text-align: left;
+    color: #0f172a;
+    font-weight: 700;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.comparison-table td {
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* 5. CITAÇÃO (BLOCKQUOTE) */
+.post-quote {
+    border-left: 5px solid #f97316; /* Laranja TechShop */
+    background: #fff7ed;
+    padding: 30px;
+    margin: 40px 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #7c2d12;
+    border-radius: 0 12px 12px 0;
+}
+
+/* 6. LISTA DE CHECKLIST */
+.post-list {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+}
+
+.post-list li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+/* 7. BOTÃO VOLTAR */
+.back-blog-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 50px;
+    padding: 12px 25px;
+    background: #0f172a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.back-blog-btn:hover {
+    background: #f97316;
+    transform: translateX(-5px);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    article.post-content h1 { font-size: 2rem; }
+    article.post-content { margin: 30px auto; }
+}

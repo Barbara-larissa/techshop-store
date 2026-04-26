@@ -1,176 +1,158 @@
 /* ========================================
-   HEADER - Cabeçalho e navegação
+   HEADER - Cabeçalho e navegação (Ajustado para Dark Mode)
    ======================================== */
 
 .header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 80px;
-	background: white;
-	box-shadow: var(--shadow);
-	z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: #1a1c24; /* 👈 Mesma cor do seu footer */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Linha sutil de separação */
 }
 
 .header.scrolled {
-	box-shadow: var(--shadow-lg);
+    background: #15171e; /* Um tom levemente mais escuro ao rolar */
+    box-shadow: var(--shadow-lg);
 }
 
 .header__container {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 100%;
-	max-width: 1440px;
-	margin: 0 auto;
-	padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
 .header__logo {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	font-family: "Poppins", sans-serif;
-	font-size: 1.5rem;
-	font-weight: 700;
-	color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary); /* Mantém a cor principal da marca */
 }
 
 .header__logo-icon {
-	width: 40px;
-	height: 40px;
+    width: 40px;
+    height: 40px;
 }
 
 .header__nav {
-	display: flex;
-	align-items: center;
-	gap: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
 .header__menu {
-	display: flex;
-	align-items: center;
-	gap: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .header__menu-link {
-	padding: 0.5rem 0.75rem;
-	font-weight: 500;
-	color: var(--gray-700);
-	position: relative;
+    padding: 0.5rem 0.75rem;
+    font-weight: 500;
+    color: #ffffff; /* 👈 Texto branco para contraste */
+    position: relative;
+    transition: color 0.3s ease;
 }
 
 .header__menu-link::after {
-	content: "";
-	position: absolute;
-	bottom: -2px;
-	left: 0;
-	right: 0;
-	height: 2px;
-	background: var(--primary);
-	transform: scaleX(0);
-	transition: transform 0.2s;
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transition: transform 0.2s;
 }
 
 .header__menu-link:hover,
 .header__menu-link.active {
-	color: var(--primary);
+    color: var(--primary);
 }
 
 .header__menu-link:hover::after,
 .header__menu-link.active::after {
-	transform: scaleX(1);
+    transform: scaleX(1);
 }
 
 .header__actions {
-	display: flex;
-	align-items: center;
-	gap: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 .header__icon-btn {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	transition: all 0.2s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #ffffff; /* 👈 Ícones do carrinho/user brancos */
+    transition: all 0.2s;
 }
 
 .header__icon-btn:hover {
-	background: var(--gray-100);
-	color: var(--primary);
+    background: rgba(255, 255, 255, 0.1); /* Efeito de hover suave no dark */
+    color: var(--primary);
 }
 
 .header__icon-btn svg {
-	width: 24px;
-	height: 24px;
+    width: 24px;
+    height: 24px;
 }
 
+/* Badge do carrinho (mantém o destaque) */
 .header__cart-badge {
-	position: absolute;
-	top: -5px;
-	right: -5px;
-	min-width: 20px;
-	height: 20px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 0 0.25rem;
-	background: var(--error);
-	color: white;
-	font-size: 0.75rem;
-	font-weight: 700;
-	border-radius: 10px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.25rem;
+    background: var(--error);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 10px;
+    border: 2px solid #1a1c24; /* Borda da cor do fundo para não "colar" */
 }
 
-.header__menu-toggle {
-	display: none;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 30px;
-	height: 24px;
-	padding: 0;
-}
-
+/* Menu Mobile Toggle */
 .header__menu-toggle-bar {
-	width: 100%;
-	height: 3px;
-	background: var(--gray-900);
-	border-radius: 3px;
-	transition: all 0.3s;
+    width: 100%;
+    height: 3px;
+    background: #ffffff; /* 👈 Barrinhas brancas */
+    border-radius: 3px;
+    transition: all 0.3s;
 }
 
+
+
+/* ANIMAÇÃO HAMBURGUER -> X */
 .header__menu-toggle.active .header__menu-toggle-bar:nth-child(1) {
-	transform: translateY(10.5px) rotate(45deg);
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
 .header__menu-toggle.active .header__menu-toggle-bar:nth-child(2) {
-	opacity: 0;
+    opacity: 0;
 }
 
 .header__menu-toggle.active .header__menu-toggle-bar:nth-child(3) {
-	transform: translateY(-10.5px) rotate(-45deg);
+    transform: rotate(-45deg) translate(5px, -5px);
 }
-
-.header__overlay {
-	display: none;
-	position: fixed;
-	top: 80px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.5);
-	z-index: 99;
-	opacity: 0;
-	transition: opacity 0.3s;
-}
-
-.header__overlay.active {
-	opacity: 1;
-}
-
-

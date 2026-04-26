@@ -1,168 +1,204 @@
 /* ========================================
-   FOOTER - Rodapé
+   FOOTER - VERSION PREMIUM TECHSHOP (COMPACTO)
    ======================================== */
 
-.footer__container {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 1.5rem; /* 👈 resolve o “colado na parede” */
-}
-
-
 .footer {
-	background: var(--gray-800);
-	color: white;
-	padding: 4rem 0 1.5rem;
-	margin-top: auto;
+    background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+    color: white;
+    padding: 3rem 0 1.5rem; /* Reduzi o respiro superior */
+    margin-top: auto;
+    position: relative;
 }
 
+.footer__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* GRID MAIS UNIDO */
 .footer__grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	gap: 3rem;
-	margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem; /* Reduzi o espaço entre as colunas */
+    margin-bottom: 2.5rem; /* Reduzi o espaço antes da linha final */
 }
 
+/* TÍTULOS MAIS PRÓXIMOS */
 .footer__column-title {
-	font-size: 1.125rem;
-	font-weight: 600;
-	color: white;
-	margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.8rem; /* Reduzi para aproximar do conteúdo */
+    letter-spacing: 0.5px;
 }
 
+/* LINKS */
 .footer__links {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-}
-.footer__link {
-	color: var(--gray-300);
-	font-size: 0.875rem;
-	transition: all 0.3s ease;
-}
-.footer__link:hover {
-	color: var(--primary);
-	padding-left: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Links mais juntinhos */
 }
 
+.footer__link {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+}
+
+.footer__link:hover {
+    color: #f97316;
+    transform: translateX(4px);
+}
+
+/* ABOUT */
 .footer__about {
-	color: var(--gray-300);
-	font-size: 0.875rem;
-	line-height: 1.75;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.9rem;
+    line-height: 1.5; /* Reduzi o espaçamento entre linhas */
 }
 
 .footer__logo {
-	font-family: "Poppins", sans-serif;
-	font-size: 1.5rem;
-	font-weight: 700;
-	color: var(--primary);
-	margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #f97316;
+    margin-bottom: 0.5rem; /* Puxa o texto de baixo para cima */
+    letter-spacing: 0.5px;
 }
 
+/* SOCIAL */
 .footer__social {
-	display: flex;
-	gap: 0.75rem;
-	margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
 }
+
+/* ============================================================
+   FOOTER - ÍCONES SOCIAIS COM HOVER
+   ============================================================ */
 
 .footer__social-link {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 40px;
-	height: 40px;
-	background: rgba(255, 255, 255, 0.1);
-	border-radius: 50%;
-	transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--gray-800, #1f2937); /* Fundo escuro padrão */
+    color: white;
+    border-radius: 50%; /* Deixa o fundo do ícone redondo */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
 }
 
+/* O efeito de Hover que sumiu */
 .footer__social-link:hover {
-	background: var(--primary);
-	transform: translateY(-3px);
+    background-color: var(--primary, #ff6b35); /* Transição para o Laranja */
+    color: white;
+    transform: translateY(-5px); /* O ícone "sobe" levemente */
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3); /* Brilho laranja suave */
 }
 
+/* Se você estiver usando ícones do Font Awesome ou Lucide */
+.footer__social-link i, 
 .footer__social-link svg {
-	width: 20px;
-	height: 20px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
 }
 
-.footer__bottom {
-	padding-top: 1.5rem;
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-}
-.footer__copyright {
-	color: var(--gray-400);
-	font-size: 0.875rem;
+.footer__social-link:hover i,
+.footer__social-link:hover svg {
+    transform: scale(1.1); /* O ícone interno aumenta um pouquinho */
 }
 
 
-
-
-
-/* ========================================
-   NEWSLETTER
-   ======================================== */
-
+/* NEWSLETTER COMPACTA (RESOLVE O PROBLEMA DO PRINT) */
+/* NEWSLETTER COMPACTA (AJUSTADO) */
+/* NEWSLETTER - APROXIMAÇÃO TOTAL */
 .footer__newsletter-form {
-	display: flex;
-	gap: 0.5rem;
-	margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Zeramos o gap para controlar tudo manualmente */
+    margin-top: 0.5rem;
 }
 
 .footer__newsletter-input {
-	flex: 1;
-	padding: 0.6rem 0.8rem;
-	border-radius: var(--radius);
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	background: transparent;
-	color: white;
-	font-size: 0.875rem;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 8px; /* Espaço entre input e o texto do termo */
 }
 
-.footer__newsletter-input::placeholder {
-	color: var(--gray-400);
+.footer__terms {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: -10px; /* Margem negativa puxa o botão para CIMA */
+    z-index: 1; /* Garante que o clique continue funcionando */
 }
 
-/* botão SEM duplicar sistema */
 .footer__newsletter-btn {
-	padding: 0.6rem 1rem;
-	border-radius: var(--radius);
-	background: var(--primary);
-	color: white;
-	font-size: 0.875rem;
-	border: none;
-	cursor: pointer;
-	transition: 0.2s;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    background: #f97316;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    /* Removemos qualquer margem superior que o navegador possa estar forçando */
+    margin-top: 0; 
 }
 
-.footer__newsletter-btn:hover {
-	background: var(--primary-dark);
+
+
+
+
+
+
+
+/* ============================================================
+   RODAPÉ FINAL CONSOLIDADO (3 COLUNAS PERFEITAS)
+   ============================================================ */
+
+/* RODAPÉ FINAL - TUDO CENTRALIZADO E JUNTO */
+.footer__bottom {
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: center; /* Centraliza o grupo todo no meio da tela */
+    align-items: center;
+    gap: 15px; /* Espaço entre os 3 blocos */
+    flex-wrap: wrap;
 }
 
-/* ========================================
-   PAGAMENTOS
-   ======================================== */
+/* Estilo para os textos (Copyright e Reservados) */
+.footer__copyright, 
+.footer__reserved {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
 
+/* O Reservado com uma cor levemente diferente se quiser destacar */
+.footer__reserved {
+    color: rgba(255,255,255,0.6);
+}
+
+/* Pagamentos colado nos textos */
 .footer__payment-methods {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px; /* Um pequeno respiro extra para não grudar totalmente */
 }
 
 .footer__payment-icon {
-	background: rgba(255, 255, 255, 0.1);
-	padding: 0.4rem 0.6rem;
-	border-radius: var(--radius);
-	font-size: 1rem;
-}
-
-.section__footer {
-	display: flex;
-	justify-content: center;
-	margin-top: 2rem;
-	margin-bottom: 3rem; 
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 1rem;
+    line-height: 1;
 }

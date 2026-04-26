@@ -1,0 +1,196 @@
+/* 1. LIMPAR O CONTAINER PAI */
+main.main-content {
+    display: block !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding-bottom: 80px !important;
+}
+
+/* 2. FORÇAR A GRID A FICAR LADO A LADO */
+#wishlistGrid.products-grid {
+    display: grid !important;
+    /* Força 3 colunas em telas grandes, 2 em médias e 1 em celular */
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 20px !important;
+    width: 100% !important;
+    clear: both !important;
+    margin-bottom: 50px !important;
+}
+
+/* 3. RESETAR O CARD (IMPEDIR QUE ELE VIRE UMA LINHA GIGANTE) */
+#wishlistGrid .product-card {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-width: 0 !important; /* Evita que o card estoure a grid */
+    float: none !important;
+}
+
+/* 1. Primeiro, garantimos que o container da imagem aceite posições absolutas */
+.product-card__image-wrapper {
+    position: relative !important; /* Essencial para a lixeira não "fugir" do card */
+    overflow: visible !important;
+}
+
+
+
+
+
+
+/* ============================================================
+   BOTÃO DE REMOVER (LIXEIRA) - VERSÃO CORRIGIDA E LIMPA
+   ============================================================ */
+
+/* 1. Garante que o card seja a referência de posição para o botão */
+#wishlistGrid .product-card {
+    position: relative !important;
+}
+
+/* 2. Seletor Único para o Botão (Cobre classes e funções onclick) */
+#wishlistGrid .product-card .btn-remove-wish,
+#wishlistGrid .product-card .delete-btn,
+#wishlistGrid .product-card button[onclick*="remove"] {
+    /* Posicionamento Agressivo no Canto Superior Direito */
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    z-index: 50 !important;
+
+    /* Reset de Layout */
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    /* Design do Botão (Estilo Circular Minimalista) */
+    width: 38px !important;
+    height: 38px !important;
+    background-color: #ffffff !important;
+    color: #ff4d4d !important;
+    border: 1px solid rgba(255, 77, 77, 0.2) !important;
+    border-radius: 50% !important;
+    
+    /* Feedback e Interação */
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* 3. Efeito ao passar o mouse */
+#wishlistGrid .product-card .btn-remove-wish:hover,
+#wishlistGrid .product-card button[onclick*="remove"]:hover {
+    background-color: #ff4d4d !important;
+    color: #ffffff !important;
+    border-color: #ff4d4d !important;
+    transform: scale(1.1) rotate(5deg); /* Leve inclinação para dar charme */
+    box-shadow: 0 6px 15px rgba(255, 77, 77, 0.4) !important;
+}
+
+/* 4. Estilização do Ícone interno */
+#wishlistGrid .product-card .btn-remove-wish i,
+#wishlistGrid .product-card button[onclick*="remove"] i {
+    font-size: 16px !important;
+    color: inherit !important; /* Segue a cor do pai (branco ou vermelho) */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 5. Ajuste de segurança para o container da imagem */
+.product-card__image-wrapper {
+    position: relative !important;
+    overflow: visible !important; /* Permite que o botão "vaze" se necessário */
+}
+
+
+/* ============================================================
+   HEADER DA WISHLIST & BOX DE COMPARTILHAMENTO
+   ============================================================ */
+
+.main-content.container {
+    padding-top: 60px !important; /* Aumente esse valor se o seu header for muito alto */
+    margin-top: 20px !important;
+}
+
+
+
+.section__header {
+    margin-top: 30px !important; /* Empurra todo o bloco do título para baixo */
+    margin-bottom: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section__title {
+    font-size: 2.8rem; /* Um pouco maior para destaque */
+    font-weight: 800;
+    color: #1e293b;
+    margin-top: 10px !important; /* Espaço extra se necessário */
+    margin-bottom: 15px;
+}
+
+.section__description {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+/* Container de Compartilhamento */
+.wishlist__share-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    background: #f8fafc; /* Um cinza bem clarinho para destacar do fundo */
+    border-radius: 50px; /* Estilo pílula */
+    border: 1px solid #e2e8f0;
+}
+
+.wishlist__share-box span {
+    font-weight: 600;
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+/* Botões de Share */
+.share-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-share {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Cores específicas para cada ícone no hover */
+.btn-share:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-share .fa-whatsapp {
+    color: #25D366; /* Verde oficial do WhatsApp */
+}
+
+.btn-share .fa-link {
+    color: #ff6b35; /* Sua cor de destaque da TechShop */
+}
+
+.btn-share:hover .fa-whatsapp,
+.btn-share:hover .fa-link {
+    filter: brightness(0.9);
+}

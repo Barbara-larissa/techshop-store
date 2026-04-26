@@ -1,264 +1,458 @@
-﻿// ========================================
-// APP.JS - TechShop (Versão Final Integrada)
+﻿﻿// ========================================
+// APP.JS - TechShop (Versão Final Consolidada)
 // ========================================
 
+// 1. CHAVE ÚNICA - Use exatamente esta em todos os arquivos do projeto
+const CART_STORAGE_KEY = 'techShopCart';
+
+// 2. ESTADO GLOBAL - Inicializa lendo do LocalStorage
+window.cart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || [];
+function isLogged() {
+    return localStorage.getItem("logged") === "true";
+}
+/**
+ * INICIALIZAÇÃO
+ */
 function init() {
     console.log("🚀 TechShop: Sistemas iniciados");
 
-    // 1. Inicializa Navegação e Carrinho
     initNavigation();
-    initCartDrawer(); // Nova função para o seu HTML específico
+    initTestimonials();
 
-    // 2. Inicializa o sistema de lógica do carrinho (se houver)
-    if (typeof initCartHandlers === 'function') {
-        initCartHandlers();
-    }
+    // Atualiza o visual em qualquer página que o script estiver rodando
+    atualizarContadorVisual();
 
-    // 3. Expõe as funções para o HTML
+    // Tenta renderizar a lista de produtos (se estiver na cart.html)
+    updateCartUI();
+    new TechShopCheckout();
+        controlarPerfilHeader(); 
+    // Expõe para o HTML
     window.changeImage = changeImage;
     window.setColor = setColor;
     window.addToCart = handleAddToCart;
-    // Expõe a abertura para o ícone do topo
-    window.openCart = () => {
-        const drawer = document.getElementById('cartDrawer');
-        if (drawer) drawer.classList.add('active');
-    };
+    window.removeFromCart = removeFromCart;
 
-    console.log("Sistemas Prontos! ✅");
-}
-
-// Adicione esta nova função logo abaixo da initNavigation()
-function initCartDrawer() {
-    const drawer = document.getElementById('cartDrawer');
-    const closeBtn = document.querySelector('.cart-drawer__close');
-    const overlay = document.querySelector('.cart-drawer__overlay');
-    const openBtn = document.querySelector('.header__cart-btn'); // Verifique se esta é a classe do seu ícone de carrinho
-
-    if (drawer) {
-        // Função para fechar
-        const closeCart = () => {
-            drawer.classList.remove('active');
-        };
-
-        // Função para abrir
-        const openCart = () => {
-            drawer.classList.add('active');
-        };
-
-        if (closeBtn) closeBtn.onclick = closeCart;
-        if (overlay) overlay.onclick = closeCart;
-        if (openBtn) openBtn.onclick = openCart;
-    }
-}
+    window.alterarQuantidade = alterarQuantidade;
 
 
+    const btnClear = document.getElementById("clearCart");
 
-
-
-
-
-
-// ==========================================
-// SISTEMA DE NAVEGAÇÃO (MENU HAMBÚRGUER)
-// ==========================================
-
-function initNavigation() {
-    const menuBtn = document.querySelector('.header__menu-toggle');
-    const nav = document.querySelector('.header__nav');
-    const overlay = document.querySelector('.header__overlay');
-    const menuLinks = document.querySelectorAll('.header__menu-link');
-
-    if (menuBtn && nav) {
-        // Função para abrir/fechar
-        const toggleMenu = () => {
-            nav.classList.toggle('active');
-            menuBtn.classList.toggle('active');
-            if (overlay) overlay.classList.toggle('active');
-            
-            // Bloqueia o scroll do corpo quando o menu está aberto
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-        };
-
-        menuBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleMenu();
-        });
-
-        // Fecha ao clicar no overlay
-        if (overlay) {
-            overlay.addEventListener('click', toggleMenu);
-        }
-
-        // Fecha ao clicar em qualquer link (importante para SPAs ou âncoras)
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                menuBtn.classList.remove('active');
-                if (overlay) overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+    if (btnClear) {
+        btnClear.addEventListener("click", () => {
+            window.cart = [];
+            localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(window.cart));
+            atualizarContadorVisual();
+            updateCartUI();
         });
     }
-}
 
-// ==========================================
-// SISTEMA DE FOTOS (SETAS E CORES)
-// ==========================================
+    const btnCheckout = document.getElementById("btnCheckout");
 
-// Função das setas (‹ e ›)
-function changeImage(productId, direction) {
-    // Busca todas as imagens do produto específico
-    const images = Array.from(document.querySelectorAll(`[id^="${productId}-img-"]`));
-    
-    if (images.length === 0) {
-        console.error("Nenhuma foto encontrada para:", productId);
-        return;
-    }
-
-    // Acha qual foto está visível (sem a classe 'hidden')
-    let currentIndex = images.findIndex(img => !img.classList.contains('hidden'));
-    if (currentIndex === -1) currentIndex = 0;
-
-    // Calcula o próximo índice (com loop infinito)
-    const nextIndex = (currentIndex + direction + images.length) % images.length;
-
-    // Usa a função setColor para aplicar a mudança
-    setColor(productId, nextIndex);
-}
-
-// Função das bolinhas de cores e atualização de visibilidade
-function setColor(productId, index) {
-    const images = Array.from(document.querySelectorAll(`[id^="${productId}-img-"]`));
-    const card = document.getElementById(`${productId}-img-0`)?.closest('.product-card');
-
-    if (!images.length) return;
-
-    // Esconde todas as imagens e mostra apenas a do índice selecionado
-    images.forEach((img, i) => {
-        if (i === index) {
-            img.classList.remove('hidden');
-        } else {
-            img.classList.add('hidden');
-        }
-    });
-
-    // Atualiza o estado visual das bolinhas de cores no card
-    if (card) {
-        const colorDots = card.querySelectorAll('.color');
-        colorDots.forEach((dot, i) => {
-            if (i === index) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
+    if (btnCheckout) {
+        btnCheckout.addEventListener("click", () => {
+            window.location.href = "checkout.html";
         });
     }
+
+
 }
 
-// ==========================================
-// SISTEMA DE CARRINHO (PONTE)
-// ==========================================
+function controlarPerfilHeader() {
+    const profileItem = document.getElementById("profileMenuItem");
 
-/**
- * Captura a imagem que está visível no momento e envia para o carrinho
- */
-function handleAddToCart(name, price, defaultImg) {
-    const cards = document.querySelectorAll('.product-card');
-    let imageToSend = defaultImg;
+    if (!profileItem) return;
 
-    cards.forEach(card => {
-        const cardName = card.querySelector('.product-card__name')?.innerText;
-        if (cardName === name) {
-            // Pega a imagem que NÃO está escondida no card específico
-            const activeImg = card.querySelector('.product-card__image:not(.hidden)');
-            if (activeImg) {
-                imageToSend = activeImg.getAttribute('src');
-            }
-        }
-    });
-
-    // Verifica se a função do seu módulo de carrinho existe antes de chamar
-    if (typeof addToCartModule === 'function') {
-        addToCartModule(name, price, imageToSend);
-    } else {
-        console.warn("Módulo de carrinho não encontrado. Produto:", name);
-    }
-}
-
-// ==========================================
-// DISPARO DA INICIALIZAÇÃO
-// ==========================================
-
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-} else {
-    init();
+    profileItem.style.display = isLogged() ? "block" : "none";
 }
 
 
-// 1. Onde os produtos ficarão guardados
-let cart = [];
+document.addEventListener('DOMContentLoaded', init);
 
-// 2. Função principal para adicionar
-function addToCart(name, price, image) {
-    // Verifica se o produto já está no carrinho
-    const existingItem = cart.find(item => item.name === name);
+// ==========================
+// LÓGICA DO CARRINHO
+// ==========================
+
+function handleAddToCart(name, price, image) {
+    // 1. Garante que temos os dados mais recentes do disco antes de alterar
+    window.cart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || [];
+
+    const cleanPrice = typeof price === 'string'
+        ? parseFloat(price.replace(',', '.'))
+        : parseFloat(price);
+
+    const existingItem = window.cart.find(item => item.name === name);
 
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        cart.push({
+        window.cart.push({
             name: name,
-            price: price,
+            price: cleanPrice,
             image: image,
             quantity: 1
         });
     }
 
-    // Atualiza a interface e o contador
+    // 2. SALVA NO DISCO (Crucial para a cart.html enxergar)
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(window.cart));
+
+    // 3. ATUALIZA A INTERFACE
+    atualizarContadorVisual();
+
+    // Se a pessoa estiver na página de carrinho e clicar em algo, atualiza a lista
     updateCartUI();
+
+    console.log("Item salvo no LocalStorage com a chave:", CART_STORAGE_KEY);
 }
 
-// 3. Função que desenha o carrinho na tela
+
+
+function atualizarContadorVisual() {
+    // Procura o elemento 198 da sua imagem
+    const badge = document.querySelector('.header__cart-badge') || document.querySelector('.cart-count');
+
+    if (badge) {
+        const totalItems = window.cart.reduce((sum, item) => sum + item.quantity, 0);
+        badge.innerText = totalItems;
+    }
+}
+
+
+
+
 function updateCartUI() {
-    const cartItemsContainer = document.getElementById("cartItems");
-    const cartTotalValue = document.getElementById("cartTotalValue");
-    const cartBadge = document.querySelector(".header__cart-badge");
+    const container = document.getElementById("cartItems");
+    if (!container) return;
 
-    if (!cartItemsContainer) return;
+    // Atualiza carrinho
+    window.cart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || [];
 
-    if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p class="cart-empty-message">O carrinho está vazio</p>';
-        cartTotalValue.innerText = "R$ 0,00";
-        if (cartBadge) cartBadge.innerText = "0";
+    // Carrinho vazio
+    if (window.cart.length === 0) {
+        container.innerHTML = '<p class="cart-empty-message">O seu carrinho está vazio.</p>';
+        updateValues(0);
         return;
     }
 
-    // Renderiza os itens
-    cartItemsContainer.innerHTML = cart.map((item, index) => `
+    // Renderiza itens
+    container.innerHTML = window.cart.map((item, index) => `
         <div class="cart-item">
-            <img src="${item.image}" alt="${item.name}" class="cart-item__img">
-            <div class="cart-item__info">
-                <h4 class="cart-item__name">${item.name}</h4>
-                <p class="cart-item__price">R$ ${item.price.toFixed(2)} x ${item.quantity}</p>
-            </div>
-            <button onclick="removeFromCart(${index})" class="cart-item__remove">&times;</button>
-        </div>
-    `).join("");
+            <img 
+                src="${item.image || '../img/placeholder.png'}" 
+                alt="${item.name}" 
+                class="cart-item__img"
+            >
 
-    // Calcula o total
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    cartTotalValue.innerText = `R$ ${total.toFixed(2)}`;
-    
-    // Atualiza o número no ícone do header
-    if (cartBadge) {
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        cartBadge.innerText = totalItems;
+            <div class="cart-item__info">
+                <h4>${item.name}</h4>
+             <div style="margin:5px 0;">
+                <small style="color: #666;">Unitário: R$ ${Number(item.price).toFixed(2).replace('.', ',')}</small><br>
+              <strong style="color: #333;">Subtotal: R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</strong>
+            </div>
+
+                <!-- 🔥 QUANTIDADE -->
+                <div class="cart-qtd-wrapper">
+                    <span class="cart-qtd-label">Quantidade</span>
+
+                    <div class="cart-qtd-box">
+                        <button onclick="alterarQuantidade(${index}, -1)">-</button>
+                        
+                        <input type="text" value="${item.quantity}" readonly>
+                        
+                        <button onclick="alterarQuantidade(${index}, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REMOVER -->
+            <button onclick="removeFromCart(${index})" class="cart-item__remove">
+                &times;
+            </button>
+        </div>
+    `).join('');
+
+    // Atualiza total
+    // Atualiza total com garantia de tipo numérico
+    const total = window.cart.reduce((sum, item) => {
+        const preco = Number(item.price) || 0;
+        const qtd = Number(item.quantity) || 0;
+        return sum + (preco * qtd);
+    }, 0);
+
+    updateValues(total);
+}
+
+function updateValues(total) {
+    const totalDisplay = document.getElementById("totalValue");
+    const subtotalDisplay = document.getElementById("subtotal");
+    const itemsCount = document.getElementById("itemsCount");
+
+    // Formata o número para R$ 0.000,00 automaticamente
+    const formatado = total.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    });
+
+    if (totalDisplay) totalDisplay.innerText = formatado;
+    if (subtotalDisplay) subtotalDisplay.innerText = formatado;
+
+    if (itemsCount) {
+        const totalItems = window.cart.reduce((sum, item) => sum + item.quantity, 0);
+        itemsCount.innerText = `${totalItems} itens`;
     }
 }
 
-// 4. Função para remover itens
 function removeFromCart(index) {
-    cart.splice(index, 1);
+    window.cart.splice(index, 1);
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(window.cart));
+    atualizarContadorVisual();
     updateCartUI();
+}
+
+function alterarQuantidade(index, valor) {
+    window.cart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || [];
+
+    if (!window.cart[index]) return;
+
+    window.cart[index].quantity += valor;
+
+    if (window.cart[index].quantity <= 0) {
+        window.cart.splice(index, 1);
+    }
+
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(window.cart));
+
+    atualizarContadorVisual();
+    updateCartUI();
+}
+
+// ==========================
+// RESTANTE DAS FUNÇÕES (UI)
+// ==========================
+
+function initNavigation() {
+    const menuBtn = document.querySelector('.header__menu-toggle');
+    const nav = document.querySelector('.header__nav');
+    if (menuBtn && nav) {
+        menuBtn.onclick = () => {
+            nav.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+        };
+    }
+}
+
+function changeImage(productId, direction) {
+    const images = Array.from(document.querySelectorAll(`[id^="${productId}-img-"]`));
+    if (!images.length) return;
+    let currentIndex = images.findIndex(img => !img.classList.contains('hidden'));
+    const nextIndex = (currentIndex + direction + images.length) % images.length;
+    setColor(productId, nextIndex);
+}
+
+function setColor(productId, index) {
+    const images = Array.from(document.querySelectorAll(`[id^="${productId}-img-"]`));
+    if (!images.length) return;
+    images.forEach((img, i) => img.classList.toggle('hidden', i !== index));
+}
+
+
+function initTestimonials() {
+    // Sua lógica de depoimentos aqui...
+}
+
+class TechShopCheckout {
+    constructor() {
+        this.cart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || [];
+
+        if (document.getElementById('cep')) {
+            this.init();
+        }
+    }
+
+    init() {
+        this.renderItems();
+        this.setupCepLookup();
+        this.setupEventListeners();
+        this.validate();
+    }
+
+    setupCepLookup() {
+        const cepInput = document.getElementById('cep');
+        if (!cepInput) return;
+
+        cepInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, "");
+            value = value.replace(/^(\d{5})(\d)/, "$1-$2");
+            e.target.value = value;
+
+            if (/^\d{5}-\d{3}$/.test(value)) {
+                this.fetchAddress(value);
+            }
+
+            this.validate();
+        });
+    }
+
+    async fetchAddress(cep) {
+        const cleanCep = cep.replace(/\D/g, "");
+        if (cleanCep.length !== 8) return;
+
+        const ruaInput = document.getElementById('rua');
+        if (ruaInput) ruaInput.value = "Buscando...";
+
+        try {
+            const res = await fetch(`https://viacep.com.br/ws/${cleanCep}/json/`);
+            const data = await res.json();
+
+            if (!data.erro) {
+                ruaInput.value = data.logradouro || "";
+                ruaInput.readOnly = true;
+                document.getElementById('numero')?.focus();
+            } else {
+                this.enableManualAddress();
+            }
+        } catch (e) {
+            this.enableManualAddress();
+        } finally {
+            this.validate();
+        }
+    }
+
+    enableManualAddress() {
+        const ruaInput = document.getElementById('rua');
+        if (!ruaInput) return;
+
+        ruaInput.value = "";
+        ruaInput.readOnly = false;
+        ruaInput.focus();
+    }
+
+    renderItems() {
+        // 1. FORÇA A ATUALIZAÇÃO: Busca o que está no "disco" (LocalStorage) agora mesmo
+        this.cart = JSON.parse(localStorage.getItem('techShopCart')) || [];
+
+        const container = document.getElementById('checkout-list');
+        const totalFinal = document.getElementById('total-final');
+
+        if (!container) return;
+
+        // 2. VERIFICAÇÃO: Se após ler o LocalStorage continuar vazio
+        if (!this.cart.length) {
+            container.innerHTML = "<p style='color: #666; padding: 20px;'>Seu carrinho está vazio.</p>";
+            if (totalFinal) totalFinal.innerText = "R$ 0,00";
+            return;
+        }
+
+        // 3. RENDERIZAÇÃO: Desenha os itens na tela
+        container.innerHTML = this.cart.map(item => {
+            const price = Number(item.price) || 0;
+            const qty = Number(item.quantity) || 0;
+
+            return `
+            <div class="summary-item" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <span>${qty}x ${item.name}</span>
+                <span>${(price * qty).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            })}</span>
+            </div>
+        `;
+        }).join('');
+
+        // 4. TOTALIZADOR: Calcula o valor final com os dados novos
+        const total = this.cart.reduce((acc, item) => {
+            return acc + (Number(item.price) * Number(item.quantity));
+        }, 0);
+
+        if (totalFinal) {
+            totalFinal.innerText = total.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+        }
+    }
+
+    validate() {
+        const btn = document.getElementById('btn-finalizar');
+        const cep = document.getElementById('cep');
+        const num = document.getElementById('numero');
+
+        if (!btn) return;
+
+        // Verifica se os campos existem e se têm conteúdo
+        const cepOk = cep && cep.value.replace(/\D/g, "").length === 8;
+        const numOk = num && num.value.trim() !== "";
+
+        if (cepOk && numOk) {
+            btn.disabled = false;
+            btn.style.opacity = "1";
+            btn.style.cursor = "pointer";
+            console.log("✅ Checkout: Campos validados, botão liberado!");
+        } else {
+            btn.disabled = true;
+            btn.style.opacity = "0.5";
+            btn.style.cursor = "not-allowed";
+        }
+    }
+
+    setupEventListeners() {
+        const btn = document.getElementById('btn-finalizar');
+        const form = document.querySelector('.checkout-steps'); // Ou o ID do seu formulário
+
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.cart = JSON.parse(localStorage.getItem('techShopCart')) || [];
+                finalizarPagamentoMercadoPago(this.cart);
+            });
+        }
+
+        // Escuta a digitação em qualquer lugar do checkout para validar na hora
+        document.addEventListener('input', (e) => {
+            if (e.target.id === 'cep' || e.target.id === 'numero') {
+                this.validate();
+            }
+        });
+    }
+}
+
+
+// ==========================================
+// CHECKOUT & MERCADO PAGO (VERSÃO INTEGRADA)
+// ==========================================
+
+async function finalizarPagamentoMercadoPago(cart) {
+    try {
+        if (!cart || cart.length === 0) {
+            alert("Seu carrinho está vazio!");
+            return;
+        }
+
+        // Prepara os itens exatamente como o PHP espera
+        const dadosParaEnvio = {
+            items: cart.map(item => ({
+                title: item.name,
+                quantity: parseInt(item.quantity),
+                unit_price: parseFloat(item.price)
+            }))
+        };
+
+        const response = await fetch('/incubadora/php/criar_preferencia.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dadosParaEnvio)
+        });
+
+        const data = await response.json();
+
+        if (data.init_point) {
+            window.location.href = data.init_point; // Abre o Mercado Pago
+        } else {
+            console.error("Erro da API:", data);
+            alert("Erro ao gerar link: " + (data.error || "Verifique o console"));
+        }
+    } catch (error) {
+        console.error("Erro na comunicação:", error);
+        alert("Erro de comunicação com o servidor. Verifique o XAMPP.");
+    }
 }

@@ -1,0 +1,230 @@
+/* =========================================
+   RESET E CONFIGURAÇÕES GERAIS (Mantenha se já tiver)
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif; /* Recomendo usar Inter ou Poppins */
+}
+
+body {
+    background-color: #f3f4f6; /* Fundo cinza claro para destacar os cards brancos */
+    color: #1f2937;
+    padding-top: 80px; /* Espaço para o header fixo */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================================
+   LAYOUT PRINCIPAL E TÍTULO
+   ========================================= */
+.checkout-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 380px; /* Largura fixa para o resumo */
+    gap: 40px; /* Mais espaço entre as colunas */
+    align-items: start;
+    padding: 40px 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 32px;
+}
+
+/* =========================================
+   CARDS DAS ETAPAS (Esquerda)
+   ========================================= */
+.step-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px; /* Bordas mais arredondadas */
+    padding: 32px; /* Mais "respiro" interno */
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.step-card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    color: #111827;
+}
+
+.step-card h2 i {
+    color: #2563eb; /* Azul TechShop */
+}
+
+/* =========================================
+   ESTILIZAÇÃO DE INPUTS (PADRÃO PROFISSIONAL)
+   ========================================= */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 6px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: all 0.2s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-control[readonly] {
+    background-color: #f9fafb;
+    color: #6b7280;
+    cursor: not-allowed;
+}
+
+/* Grid de Inputs (Tamanhos específicos em Desktop) */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+}
+
+/* CEP e Número mais curtos */
+.col-cep { grid-column: span 4; }
+.col-numero { grid-column: span 3; }
+.col-endereco { grid-column: span 8; }
+.col-complemento { grid-column: span 9; }
+
+/* =========================================
+   PAGAMENTO (OPÇÕES EM GRID)
+   ========================================= */
+.payment-methods {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.payment-option {
+    cursor: pointer;
+}
+
+.payment-option input {
+    display: none; /* Esconde o rádio */
+}
+
+.option-content {
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    transition: all 0.3s;
+    font-weight: 600;
+    color: #374151;
+}
+
+.payment-option input:checked + .option-content {
+    border-color: #2563eb;
+    background-color: #eff6ff;
+    color: #2563eb;
+}
+
+/* Campos do Cartão (mais curtos) */
+#card-fields .form-grid {
+    margin-top: 16px;
+}
+
+/* =========================================
+   SIDEBAR RESUMO (DIREITA E FIXED/STICKY)
+   ========================================= */
+.checkout-sidebar {
+    position: sticky;
+    top: 100px; /* Mantém visível ao rolar */
+    height: fit-content;
+}
+
+.summary-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.summary-card h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+#checkout-list {
+    max-height: 200px; /* Barra de rolagem interna se tiver muitos itens */
+    overflow-y: auto;
+    margin-bottom: 16px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9375rem;
+    color: #4b5563;
+    margin-bottom: 8px;
+}
+
+.summary-totals {
+    border-top: 1px solid #f3f4f6;
+    padding-top: 16px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* =========================================
+   BOTÃO FINALIZAR (ESTADO DESABILITADO)
+   ========================================= */
+#btn-finalizar {
+    width: 100%;
+    padding: 16px;
+    background: #10b981; /* Verde Sucesso */
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 24px;
+}
+
+#btn-finalizar:hover:not(:disabled) {
+    background: #059669;
+}
+
+#btn-finalizar:disabled {
+    background: #d1d5db; /* Cinza claro */
+    cursor: not-allowed;
+    color: #9ca3af;
+}
+
+

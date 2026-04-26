@@ -26,12 +26,15 @@ h4 {
 h1 {
 	font-size: 3rem;
 }
+
 h2 {
 	font-size: 2.25rem;
 }
+
 h3 {
 	font-size: 1.875rem;
 }
+
 h4 {
 	font-size: 1.5rem;
 }
@@ -44,4 +47,38 @@ h4 {
 
 .main-content {
 	margin-top: 80px;
+}
+
+
+/* ============================================================
+   CUSTOM SCROLLBAR - DESIGN SYSTEM TECH SHOP
+   ============================================================ */
+
+/* 1. Largura e Estrutura (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 10px; /* Mantém entre os 8px e 10px pedidos */
+}
+
+/* 2. O trilho da barra (Track) */
+::-webkit-scrollbar-track {
+    background: var(--gray-100, #f1f5f9); /* Fundo sutil */
+    border-radius: 10px;
+}
+
+/* 3. A barra que se move (Thumb) */
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary, #ff6b35); /* Sua cor primária laranja */
+    border-radius: 10px;                       /* Cantos arredondados */
+    border: 2px solid var(--gray-100, #f1f5f9); /* Espaçamento sutil para o efeito premium */
+}
+
+/* 4. Feedback visual ao passar o mouse */
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-dark, #e55a2b);
+}
+
+/* 5. Suporte para Firefox (Critério de Conclusão) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary, #ff6b35) var(--gray-100, #f1f5f9);
 }

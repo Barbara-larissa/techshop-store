@@ -4,35 +4,46 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Tech Shop - Home | As Melhores Ofertas em Tecnologia</title>
 	<meta name="description"
-		content="Encontre as melhores ofertas em eletrônicos, periféricos e muito mais. Compre com os melhores preços!" />
-	<meta name="keywords" content="e-commerce, eletrônicos, ofertas, compras online" />
-	<meta name="author" content="E-commerce" />
+		content="Turbine seu setup na Tech Shop! Encontre as melhores ofertas em hardware, periféricos gamer e eletrônicos com entrega rápida e preços imbatíveis. Confira!" />
+	<meta name="keywords" content="e-commerce, eletrônicos, hardware, setup gamer, compras online, Londrina" />
+	<meta name="author" content="Tech Shop" />
 
-	<!-- Open Graph / Facebook -->
+	<link rel="canonical" href="https://barbaralarissa.github.io/tech-shop/pages/index.html" />
+
+	<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../img/favicon.png" type="image/png">
+
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="E-commerce - As Melhores Ofertas em Tecnologia" />
-	<meta property="og:description" content="Encontre as melhores ofertas em eletrônicos, periféricos e muito mais" />
+	<meta property="og:url" content="https://barbaralarissa.github.io/tech-shop/" />
+	<meta property="og:title" content="Tech Shop - As Melhores Ofertas em Tecnologia" />
+	<meta property="og:description"
+		content="Turbine seu setup! Hardware e periféricos com os melhores preços e qualidade garantida." />
+	<meta property="og:image" content="https://barbaralarissa.github.io/tech-shop/img/og-share.png" />
 
-	<title>E-commerce - Home | As Melhores Ofertas em Tecnologia</title>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Tech Shop - As Melhores Ofertas em Tecnologia" />
+	<meta name="twitter:description"
+		content="Encontre periféricos, hardware e muito mais. Compre com os melhores preços!" />
+	<meta name="twitter:image" content="https://barbaralarissa.github.io/tech-shop/img/og-share.png" />
 
-	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link
 		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
 		rel="stylesheet" />
 
-	<!-- Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 	<link rel="stylesheet" href="../css/main.css" />
-	<link rel="stylesheet" href="../css/components/cart.css">
+	<link rel="stylesheet" href="../css/components/products.css">
 </head>
 
 <body>
-	<!-- Header / Navigation -->
 	<header class="header">
 		<div class="header__container">
-			<!-- Logo -->
 			<a href="index.html" class="header__logo">
 				<svg class="header__logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<rect width="40" height="40" rx="8" fill="currentColor" />
@@ -42,31 +53,55 @@
 				<span>TechShop</span>
 			</a>
 
-			<!-- Menu Toggle (Mobile) -->
 			<button class="header__menu-toggle" aria-label="Menu">
 				<span class="header__menu-toggle-bar"></span>
 				<span class="header__menu-toggle-bar"></span>
 				<span class="header__menu-toggle-bar"></span>
 			</button>
 
-			<!-- Navigation -->
 			<nav class="header__nav">
 				<ul class="header__menu">
 					<li class="header__menu-item">
 						<a href="index.html" class="header__menu-link active">Home</a>
 					</li>
+
+					<li class="header__menu-item">
+						<a href="about.html" class="header__menu-link active">Sobre Nós </a>
+					</li>
+
 					<li class="header__menu-item">
 						<a href="products.html" class="header__menu-link">Produtos</a>
 					</li>
 					<li class="header__menu-item">
 						<a href="#ofertas" class="header__menu-link">Ofertas</a>
 					</li>
-					<li class="header__menu-item">
-						<a href="#contato" class="header__menu-link">Contato</a>
+
+					<li class="header__menu-item header__dropdown">
+						<a href="contact.html" class="header__menu-link">Contato</a>
 					</li>
+
+					<li class="header__menu-item">
+						<a href="faq.html" class="header__menu-link">Dúvidas</a>
+					</li>
+
+					<li class="header__menu-item">
+						<a href="blog.html" class="header__menu-link">Blog</a>
+					</li>
+
+					<li class="header__menu-item">
+						<a href="wishlist.html" class="header__menu-link">
+							<i class="fa-solid fa-heart"></i>
+						</a>
+					</li>
+
+
+					<li id="profileMenuItem" style="display:none;">
+						<a href="profile.html">Perfil</a>
+					</li>
+
+
 				</ul>
 
-				<!-- Actions -->
 				<div class="header__actions">
 					<button class="header__icon-btn" data-login-btn aria-label="Login">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -75,7 +110,7 @@
 							<circle cx="12" cy="7" r="4"></circle>
 						</svg>
 					</button>
-					<button class="header__icon-btn" data-cart-btn aria-label="Carrinho">
+					<a href="./cart.html" class="header__icon-btn" aria-label="Carrinho">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
 							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<circle cx="9" cy="21" r="1"></circle>
@@ -83,15 +118,12 @@
 							<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
 						</svg>
 						<span class="header__cart-badge">0</span>
-					</button>
+					</a>
 				</div>
 			</nav>
-
-			<!-- Overlay for mobile menu -->
 			<div class="header__overlay"></div>
 		</div>
 	</header>
-
 	<!-- Main Content -->
 	<main class="main-content">
 		<!-- Hero Section -->
@@ -154,374 +186,512 @@
 					<p class="section__description">
 						As melhores promoções selecionadas especialmente para você
 					</p>
+
 				</div>
 
-				<div class="offers__grid" id="featuredProducts">
-					<!-- Produto 1 -->
-					<div class="product-card">
-						<span class="product-card__badge">-30%</span>
-						<div class="product-card__image-wrapper">
-							<img src="../img/fones/fone-preto.webp" alt="Fone JBL Bluetooth"
-								class="product-card__image dynamic" id="product1-img-0">
-							<img src="../img/fones/fone-rosa.webp" class="product-card__image dynamic hidden"
-								id="product1-img-1">
-							<img src="../img/fones/foneazull.webp" class="product-card__image dynamic hidden"
-								id="product1-img-2">
+				<div class="carousel-container">
 
-							<button class="product-card__arrow left" onclick="changeImage('product1', -1)">‹</button>
-							<button class="product-card__arrow right" onclick="changeImage('product1', 1)">›</button>
-						</div>
+					<div class="carousel-controls-centro">
+						<button class="carousel-nav-btn prev" onclick="moveCarousel(-1)">‹</button>
 
-						<div class="product-card__content">
-							<span class="product-card__category">Áudio</span>
-							<h3 class="product-card__name">Fone JBL Bluetooth</h3>
+						<button class="carousel-nav-btn next" onclick="moveCarousel(1)">›</button>
+					</div>
 
-							<div class="product-card__price-wrapper">
-								<span class="product-card__original-price">R$ 299,90</span>
-								<span class="product-card__price">R$ 199,90</span>
+
+
+					<div class="offers__wrapper">
+						<div class="offers__grid" id="featuredProducts">
+
+							<div class="product-card">
+								<span class="product-card__badge">-30%</span>
+								<div class="product-card__image-wrapper">
+									<img src="../img/fones/fone-preto.webp" alt="Fone JBL Bluetooth"
+										class="product-card__image dynamic" id="product1-img-0">
+									<img src="../img/fones/fone-rosa.webp" class="product-card__image dynamic hidden"
+										id="product1-img-1">
+									<img src="../img/fones/foneazull.webp" class="product-card__image dynamic hidden"
+										id="product1-img-2">
+
+								
+								</div>
+								<div class="product-card__content">
+									<span class="product-card__category">Áudio</span>
+									<h3 class="product-card__name">Fone JBL Bluetooth</h3>
+									<div class="product-card__price-wrapper">
+										<span class="product-card__original-price">R$ 299,90</span>
+										<span class="product-card__price">R$ 199,90</span>
+									</div>
+									<div class="product-card__colors">
+										<span class="color color-black active" onclick="setColor('product1', 0)"></span>
+										<span class="color color-pink" onclick="setColor('product1', 1)"></span>
+										<span class="color color-blue" onclick="setColor('product1', 2)"></span>
+									</div>
+								</div>
+								<div class="product-card__footer">
+									<button class="btn btn-primary product-card__btn" data-id="fone-jbl-01"
+										data-name="Fone JBL Bluetooth" data-price="199.90"
+										data-image="../img/fones/fone-preto.webp">
+										🛒 Adicionar
+									</button>
+									<button class="product-card__favorite">❤</button>
+								</div>
 							</div>
 
-							<div class="product-card__colors">
-								<span class="color color-black active" onclick="setColor('product1', 0)"></span>
-								<span class="color color-pink" onclick="setColor('product1', 1)"></span>
-								<span class="color color-blue" onclick="setColor('product1', 2)"></span>
-							</div>
-						</div>
+							<div class="product-card">
+								<span class="product-card__badge">-20%</span>
+								<div class="product-card__image-wrapper">
+									<img src="../img/meck/meck-rosa.webp" class="product-card__image dynamic"
+										id="product2-img-0">
+									<img src="../img/meck/meck-preto.webp" class="product-card__image dynamic hidden"
+										id="product2-img-1">
+									<img src="../img/meck/meck-cinza.webp" class="product-card__image dynamic hidden"
+										id="product2-img-2">
 
-						<div class="product-card__footer">
-							<button class="btn btn-primary product-card__btn"
-								onclick="addToCart('Fone JBL Bluetooth', 199.90, '../img/fones/fone-preto.webp')">
-								🛒 Adicionar
-							</button>
-							<button class="product-card__favorite">❤</button>
+									
+								</div>
+								<div class="product-card__content">
+									<span class="product-card__category">Computadores</span>
+									<h3 class="product-card__name">MacBook Rosa</h3>
+									<div class="product-card__price-wrapper">
+										<span class="product-card__original-price">R$ 9.999,90</span>
+										<span class="product-card__price">R$ 7.999,90</span>
+									</div>
+									<div class="product-card__colors">
+										<span class="color color-pink active" onclick="setColor('product2', 0)"></span>
+										<span class="color color-black" onclick="setColor('product2', 1)"></span>
+										<span class="color color-silver" onclick="setColor('product2', 2)"></span>
+									</div>
+								</div>
+								<div class="product-card__footer">
+									<button class="btn btn-primary product-card__btn" data-id="macbook-rosa-02"
+										data-name="MacBook Rosa" data-price="7999.90"
+										data-image="../img/meck/meck-rosa.webp">
+										🛒 Adicionar
+									</button>
+									<button class="product-card__favorite">❤</button>
+								</div>
+							</div>
+
+							<div class="product-card">
+								<span class="product-card__badge">-36%</span>
+								<div class="product-card__image-wrapper">
+									<img src="../img/teclado/teclado-preto.webp" class="product-card__image dynamic"
+										id="product3-img-0">
+									<img src="../img/teclado/teclado-branco.webp"
+										class="product-card__image dynamic hidden" id="product3-img-1">
+
+								</div>
+								<div class="product-card__content">
+									<span class="product-card__category">Periféricos</span>
+									<h3 class="product-card__name">Teclado Mecânico RGB</h3>
+									<div class="product-card__price-wrapper">
+										<span class="product-card__original-price">R$ 699,90</span>
+										<span class="product-card__price">R$ 449,90</span>
+									</div>
+									<div class="product-card__colors">
+										<span class="color color-black active" onclick="setColor('product3', 0)"></span>
+										<span class="color color-white" onclick="setColor('product3', 1)"></span>
+									</div>
+								</div>
+								<div class="product-card__footer">
+									<button class="btn btn-primary product-card__btn" data-id="teclado-rgb-03"
+										data-name="Teclado Mecânico RGB" data-price="449.90"
+										data-image="../img/teclado/teclado-preto.webp">
+										🛒 Adicionar
+									</button>
+									<button class="product-card__favorite">❤</button>
+								</div>
+							</div>
+
+
+							<div class="product-card">
+								<span class="product-card__badge">-25%</span>
+								<div class="product-card__image-wrapper">
+									<img src="../img/mouse/fb2c98ac21.webp" alt="Mouse Gamer Pro Ultra RGB"
+										class="product-card__image dynamic" id="product4-img-0">
+
+								
+								</div>
+								<div class="product-card__content">
+									<span class="product-card__category">Periféricos</span>
+									<h3 class="product-card__name">Mouse Gamer Pro Ultra RGB 16K DPI</h3>
+									<div class="product-card__price-wrapper">
+										<span class="product-card__original-price">R$ 399,90</span>
+										<span class="product-card__price">R$ 299,90</span>
+									</div>
+									<div class="product-card__colors">
+										<span class="color color-black active" onclick="setColor('product4', 0)"></span>
+									</div>
+								</div>
+								<div class="product-card__footer">
+									<button class="btn btn-primary product-card__btn" data-id="mouse-gamer-04"
+										data-name="Mouse Gamer Pro Ultra RGB" data-price="299.90"
+										data-image="../img/perifericos/mouse-gamer-negro.webp">
+										🛒 Adicionar
+									</button>
+									<button class="product-card__favorite">❤</button>
+								</div>
+							</div>
+
+
+
+
+
 						</div>
 					</div>
 
-					<!-- Produto 2 -->
-					<div class="product-card">
-						<span class="product-card__badge">-20%</span>
-						<div class="product-card__image-wrapper">
-							<img src="../img/meck/meck-rosa.webp" class="product-card__image dynamic"
-								id="product2-img-0">
-							<img src="../img/meck/meck-preto.webp" class="product-card__image dynamic hidden"
-								id="product2-img-1">
-							<img src="../img/meck/meck-cinza.webp" class="product-card__image dynamic hidden"
-								id="product2-img-2">
 
-							<button class="product-card__arrow left" onclick="changeImage('product2', -1)">‹</button>
-							<button class="product-card__arrow right" onclick="changeImage('product2', 1)">›</button>
-						</div>
+				</div>
 
-						<div class="product-card__content">
-							<span class="product-card__category">Computadores</span>
-							<h3 class="product-card__name">MacBook Rosa</h3>
-
-							<div class="product-card__price-wrapper">
-								<span class="product-card__original-price">R$ 9.999,90</span>
-								<span class="product-card__price">R$ 7.999,90</span>
-							</div>
-
-							<div class="product-card__colors">
-								<span class="color color-pink active" onclick="setColor('product2', 0)"></span>
-								<span class="color color-black" onclick="setColor('product2', 1)"></span>
-								<span class="color color-silver" onclick="setColor('product2', 2)"></span>
-							</div>
-						</div>
-
-						<div class="product-card__footer">
-							<button class="btn btn-primary product-card__btn"
-								onclick="addToCart('MacBook Rosa', 7999.90, '../img/meck/meck-rosa.webp')">
-								🛒 Adicionar
-							</button>
-							<button class="product-card__favorite">❤</button>
-						</div>
-					</div>
-
-					<!-- Produto 3 -->
-					<div class="product-card">
-						<span class="product-card__badge">-36%</span>
-						<div class="product-card__image-wrapper">
-							<img src="../img/teclado/teclado-preto.webp" class="product-card__image dynamic"
-								id="product3-img-0">
-							<img src="../img/teclado/teclado-branco.webp" class="product-card__image dynamic hidden"
-								id="product3-img-1">
-
-							<button class="product-card__arrow left" onclick="changeImage('product3', -1)">‹</button>
-							<button class="product-card__arrow right" onclick="changeImage('product3', 1)">›</button>
-						</div>
-
-						<div class="product-card__content">
-							<span class="product-card__category">Periféricos</span>
-							<h3 class="product-card__name">Teclado Mecânico RGB</h3>
-
-							<div class="product-card__price-wrapper">
-								<span class="product-card__original-price">R$ 699,90</span>
-								<span class="product-card__price">R$ 449,90</span>
-							</div>
-
-							<div class="product-card__colors">
-								<span class="color color-black active" onclick="setColor('product3', 0)"></span>
-								<span class="color color-white" onclick="setColor('product3', 1)"></span>
-							</div>
-						</div>
-
-						<div class="product-card__footer">
-							<button class="btn btn-primary product-card__btn"
-								onclick="addToCart('Teclado Mecânico RGB', 449.90, '../img/teclado/teclado-preto.webp')">
-								🛒 Adicionar
-							</button>
-							<button class="product-card__favorite">❤</button>
-						</div>
-					</div>
-
-					<div class="section__footer">
-						<a href="products.html" class="btn btn-secondary btn-lg">
-							Ver Todos os Produtos
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-								fill="none" stroke="currentColor" stroke-width="2">
-								<line x1="5" y1="12" x2="19" y2="12"></line>
-								<polyline points="12 5 19 12 12 19"></polyline>
-							</svg>
-						</a>
-					</div>
+				<div class="section__footer">
+					<a href="products.html" class="btn btn-secondary btn-lg">
+						Ver Todos os Produtos
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2">
+							<line x1="5" y1="12" x2="19" y2="12"></line>
+							<polyline points="12 5 19 12 12 19"></polyline>
+						</svg>
+					</a>
 				</div>
 			</div>
 		</section>
 
-	<!-- Benefits Section -->
-<section class="benefits py-20 bg-gray">
-    <div class="container">
-        <div class="benefits__grid">
-            <!-- CARD PAGAMENTO -->
-            <div class="benefit">
-                <div class="benefit__icon">💳</div>
-                <h3 class="benefit__title">Formas de Pagamento</h3>
-                <p class="benefit__text">Aceitamos:</p>
-                <div class="benefit__payments">
-                    <span>💳</span>
-                    <span>🏦</span>
-                    <span>📱</span>
-                </div>
-            </div>
 
-            <!-- FRETE GRÁTIS -->
-            <div class="benefit">
-                <div class="benefit__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M20 7h-9"></path>
-                        <path d="M14 17H5"></path>
-                        <circle cx="17" cy="17" r="3"></circle>
-                        <circle cx="7" cy="7" r="3"></circle>
-                    </svg>
-                </div>
-                <h3 class="benefit__title">Frete Grátis</h3>
-                <p class="benefit__text">Em compras acima de R$ 299</p>
-            </div>
 
-            <!-- PAGAMENTO SEGURO -->
-            <div class="benefit">
-                <div class="benefit__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                        <line x1="1" y1="10" x2="23" y2="10"></line>
-                    </svg>
-                </div>
-                <h3 class="benefit__title">Pagamento Seguro</h3>
-                <p class="benefit__text">Até 12x sem juros no cartão</p>
-            </div>
 
-            <!-- TROCA FÁCIL -->
-            <div class="benefit">
-                <div class="benefit__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                </div>
-                <h3 class="benefit__title">Troca Fácil</h3>
-                <p class="benefit__text">30 dias para trocas e devoluções</p>
-            </div>
 
-            <!-- SUPORTE 24/7 -->
-            <div class="benefit">
-                <div class="benefit__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                </div>
-                <h3 class="benefit__title">Suporte 24/7</h3>
-                <p class="benefit__text">Atendimento sempre disponível</p>
-            </div>
-        </div>
-    </div>
-</section>
+		<section class="testimonials">
+			<div class="container">
+				<div class="section__header">
+					<h2 class="section__title">O que nossos clientes dizem</h2>
+					<p class="section__description">Mais de 10.000 clientes satisfeitos em todo o Brasil</p>
+				</div>
+
+				<div class="testimonial-container">
+					<div class="testimonial-track" id="track">
+						<figure class="testimonial-card">
+							<div class="rating">★★★★★</div>
+							<blockquote>
+								<p>“O setup gamer ficou animal. A entrega foi rápida e o suporte técnico nota 10.”</p>
+							</blockquote>
+							<figcaption>
+								<img src="https://i.pravatar.cc/100?u=1" class="avatar" alt="Lucas Oliveira">
+								<div class="author-info"><strong>Lucas Oliveira</strong><span>Dev Full Stack</span>
+								</div>
+							</figcaption>
+						</figure>
+
+						<figure class="testimonial-card">
+							<div class="rating">★★★★★</div>
+							<blockquote>
+								<p>“Comprei um MacBook Pro e chegou impecável. Melhor preço do Brasil.”</p>
+							</blockquote>
+							<figcaption>
+								<img src="https://i.pravatar.cc/100?u=2" class="avatar" alt="Beatriz Souza">
+								<div class="author-info"><strong>Beatriz Souza</strong><span>Designer UI/UX</span></div>
+							</figcaption>
+						</figure>
+
+						<figure class="testimonial-card">
+							<div class="rating">★★★★★</div>
+							<blockquote>
+								<p>“Ótima variedade de periféricos. Atendimento impecável e entrega rápida.”</p>
+							</blockquote>
+							<figcaption>
+								<img src="https://i.pravatar.cc/100?u=3" class="avatar" alt="Ricardo Lima">
+								<div class="author-info"><strong>Ricardo Lima</strong><span>Editor de Vídeo</span></div>
+							</figcaption>
+						</figure>
+
+						<figure class="testimonial-card">
+							<div class="rating">★★★★★</div>
+							<blockquote>
+								<p>“Minha placa de vídeo chegou muito bem embalada. Dá para ver que cuidam do hardware.”
+								</p>
+							</blockquote>
+							<figcaption>
+								<img src="https://i.pravatar.cc/100?u=4" class="avatar" alt="André Costa">
+								<div class="author-info"><strong>André Costa</strong><span>Gamer & Streamer</span></div>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+
+				<div class="carousel-controls">
+					<button class="control-btn" id="prevBtn" aria-label="Anterior">❮</button>
+					<button class="control-btn" id="nextBtn" aria-label="Próximo">❯</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- Benefits Section -->
+		<section class="benefits py-20 bg-gray">
+			<div class="container">
+				<div class="benefits__grid">
+					<!-- CARD PAGAMENTO -->
+					<div class="benefit">
+						<div class="benefit__icon">💳</div>
+						<h3 class="benefit__title">Formas de Pagamento</h3>
+						<p class="benefit__text">Aceitamos:</p>
+						<div class="benefit__payments">
+							<span>💳</span>
+							<span>🏦</span>
+							<span>📱</span>
+						</div>
+					</div>
+
+					<!-- FRETE GRÁTIS -->
+					<div class="benefit">
+						<div class="benefit__icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+								fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round">
+								<path d="M20 7h-9"></path>
+								<path d="M14 17H5"></path>
+								<circle cx="17" cy="17" r="3"></circle>
+								<circle cx="7" cy="7" r="3"></circle>
+							</svg>
+						</div>
+						<h3 class="benefit__title">Frete Grátis</h3>
+						<p class="benefit__text">Em compras acima de R$ 299</p>
+					</div>
+
+					<!-- PAGAMENTO SEGURO -->
+					<div class="benefit">
+						<div class="benefit__icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+								fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round">
+								<rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+								<line x1="1" y1="10" x2="23" y2="10"></line>
+							</svg>
+						</div>
+						<h3 class="benefit__title">Pagamento Seguro</h3>
+						<p class="benefit__text">Até 12x sem juros no cartão</p>
+					</div>
+
+					<!-- TROCA FÁCIL -->
+					<div class="benefit">
+						<div class="benefit__icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+								fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round">
+								<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+								<polyline points="9 22 9 12 15 12 15 22"></polyline>
+							</svg>
+						</div>
+						<h3 class="benefit__title">Troca Fácil</h3>
+						<p class="benefit__text">30 dias para trocas e devoluções</p>
+					</div>
+
+					<!-- SUPORTE 24/7 -->
+					<div class="benefit">
+						<div class="benefit__icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+								fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round">
+								<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+							</svg>
+						</div>
+						<h3 class="benefit__title">Suporte 24/7</h3>
+						<p class="benefit__text">Atendimento sempre disponível</p>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
+	<!--------MODAL LOGIN-->
+	<!--------MODAL LOGIN-->
+	<div id="authModal" class="modal">
+		<div class="modal__overlay"></div>
 
-<div class="modal" id="authModal">
-    <div class="modal__overlay"></div>
-    <div class="modal__content">
-        <button class="modal__close">&times;</button>
+		<div class="modal__content">
+			<button class="modal__close" id="btnCloseModal" aria-label="Fechar">&times;</button>
 
-        <div class="auth-slider">
-            
-            <div class="auth-form active" id="loginFormContainer">
-                <h2 class="modal__title">Login</h2>
-                <form id="loginForm">
-                    <input type="text" id="loginEmail" placeholder="Email" required />
-                    <input type="password" id="loginPassword" placeholder="Senha" required />
-                    <button type="submit">Entrar</button>
-                </form>
-                <p class="auth-switch">Não tem conta? <a href="#" id="goToRegister">Cadastre-se</a></p>
-            </div>
+			<div class="auth-header">
+				<div class="auth-logo-wrapper">
+					<i class="fas fa-check-square"></i> <span>TechShop</span>
+				</div>
+				<p>Sua loja tech favorita</p>
+			</div>
 
-            <div class="auth-form" id="signupFormContainer">
-                <h2 class="modal__title">Cadastro</h2>
-                <form id="signupForm">
-                    <input type="text" id="signupName" placeholder="Nome" required />
-                    <input type="text" id="signupEmail" placeholder="Email" required />
-                    <input type="password" id="signupPassword" placeholder="Senha" required />
-                    <button type="submit">Cadastrar</button>
-                </form>
-                <p class="auth-switch">Já tem conta? <a href="#" id="goToLogin">Entrar</a></p>
-            </div>
-            
-        </div>
-    </div>
-</div>
-	<!-- Carrinho -->
-	<div id="cartDrawer" class="cart-drawer">
-		<div class="cart-drawer__header">
-			<h3>Carrinho</h3>
-			<button class="cart-drawer__close">&times;</button>
-		</div>
-		<div class="cart-drawer__body" id="cartItemsContainer">
-			<!-- Items serão adicionados via JS -->
-		</div>
-		<div class="cart-drawer__footer">
-			<div class="cart-drawer__total">Total: R$ <span id="cartTotal">0.00</span></div>
-			<button class="btn btn-primary" id="checkoutBtn">Finalizar Compra</button>
+			<div class="auth-slider">
+				<div class="auth-form">
+					<div class="auth-tabs">
+						<button class="tab-btn active" id="tabLogin">Entrar</button>
+						<button class="tab-btn" id="goToRegister">Criar Conta</button>
+					</div>
+
+					<div class="social-login">
+						<button type="button" class="btn-social">
+							<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"> Google
+						</button>
+						<button type="button" class="btn-social">
+							<i class="fab fa-apple"></i> Apple
+						</button>
+					</div>
+
+					<div class="auth-divider"><span>ou continue com e-mail</span></div>
+
+					<form id="loginForm">
+						<div class="auth-group">
+							<label for="loginEmail">E-mail *</label>
+							<div class="input-with-icon">
+								<i class="far fa-envelope"></i>
+								<input type="email" id="loginEmail" placeholder="seu@email.com" required>
+							</div>
+						</div>
+
+						<div class="auth-group">
+							<label for="loginPassword">Senha *</label>
+							<div class="input-with-icon">
+								<i class="fas fa-lock"></i>
+								<input type="password" id="loginPassword" placeholder="••••••••" required>
+								<i class="far fa-eye toggle-password" data-target="loginPassword"></i>
+							</div>
+						</div>
+
+						<div class="auth-aux-links">
+							<a href="#" id="recoveryPassword">Esqueci minha senha</a>
+						</div>
+
+						<button type="submit" class="btn-primary-auth">Entrar</button>
+					</form>
+				</div>
+
+				<div class="auth-form">
+					<div class="auth-tabs">
+						<button class="tab-btn" id="goToLogin">Entrar</button>
+						<button class="tab-btn active">Criar Conta</button>
+					</div>
+					<form id="registerForm">
+						<div class="auth-group">
+							<label for="regName">Nome Completo *</label>
+							<input type="text" id="regName" placeholder="Seu nome" required>
+						</div>
+						<div class="auth-group">
+							<label for="regEmail">E-mail *</label>
+							<input type="email" id="regEmail" placeholder="email@exemplo.com" required>
+						</div>
+
+						<!-- 🔥 AQUI FOI CORRIGIDO (ADICIONADO OLHO) -->
+						<div class="auth-group">
+							<label for="regPassword">Senha *</label>
+							<div class="input-with-icon">
+								<i class="fas fa-lock"></i>
+								<input type="password" id="regPassword" placeholder="Crie uma senha" required>
+								<i class="far fa-eye toggle-password" data-target="regPassword"></i>
+							</div>
+						</div>
+
+						<button type="submit" class="btn-primary-auth">Cadastrar</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 
-<!-- Footer -->
-    <footer class="footer">
-        <div class="footer__container">
-            <div class="footer__grid">
-                <!-- About -->
-                <div class="footer__column">
-                    <div class="footer__logo">TechShop</div>
-                    <p class="footer__about">
-                        Sua loja online de tecnologia com os melhores produtos e as
-                        melhores ofertas.
-                    </p>
-                    <div class="footer__social">
-                        <a href="#" class="footer__social-link" aria-label="Facebook">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="currentColor">
-                                <path
-                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="footer__social-link" aria-label="Instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                        <a href="#" class="footer__social-link" aria-label="Twitter">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="currentColor">
-                                <path
-                                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
 
-                <!-- Links -->
-                <div class="footer__column">
-                    <h4 class="footer__column-title">Links Rápidos</h4>
-                    <ul class="footer__links">
-                        <li>
-                            <a href="index.html" class="footer__link">Home</a>
-                        </li>
-                        <li>
-                            <a href="products.html" class="footer__link">Produtos</a>
-                        </li>
-                        <li>
-                            <a href="#ofertas" class="footer__link">Ofertas</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Sobre Nós</a>
-                        </li>
-                    </ul>
-                </div>
 
-                <!-- Help -->
-                <div class="footer__column">
-                    <h4 class="footer__column-title">Ajuda</h4>
-                    <ul class="footer__links">
-                        <li>
-                            <a href="#" class="footer__link">FAQ</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Envio e Entrega</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Política de Devolução</a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">Rastreamento</a>
-                        </li>
-                    </ul>
-                </div>
+	<footer class="footer">
+		<div class="footer__container">
+			<div class="footer__grid">
+				<div class="footer__column">
+					<div class="footer__logo">TechShop</div>
+					<p class="footer__about">
+						Sua loja online de tecnologia com os melhores produtos e as
+						melhores ofertas.
+					</p>
+					<div class="footer__social">
+						<a href="#" class="footer__social-link" aria-label="Facebook">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+								fill="currentColor">
+								<path
+									d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+							</svg>
+						</a>
+						<a href="#" class="footer__social-link" aria-label="Instagram">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+								fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round">
+								<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+								<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+								<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+							</svg>
+						</a>
+						<a href="#" class="footer__social-link" aria-label="Twitter">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+								fill="currentColor">
+								<path
+									d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+							</svg>
+						</a>
+					</div>
+				</div>
 
-                <!-- Newsletter -->
-                <div class="footer__column">
-                    <h4 class="footer__column-title">Newsletter</h4>
-                    <p class="footer__about">Receba ofertas exclusivas no seu e-mail</p>
-                    <form class="footer__newsletter-form" data-validate id="newsletterForm">
-                        <input type="email" name="email" class="footer__newsletter-input" placeholder="Seu e-mail"
-                            required />
-                        <button type="submit" class="footer__newsletter-btn">
-                            Inscrever
-                        </button>
-                    </form>
-                </div>
-            </div>
+				<div class="footer__column">
+					<h4 class="footer__column-title">Links Rápidos</h4>
+					<ul class="footer__links">
+						<li><a href="index.html" class="footer__link">Home</a></li>
+						<li><a href="products.html" class="footer__link">Produtos</a></li>
+						<li><a href="#ofertas" class="footer__link">Ofertas</a></li>
+						<li><a href="#" class="footer__link">Sobre Nós</a></li>
+					</ul>
+				</div>
 
-            <!-- Footer Bottom -->
-            <div class="footer__bottom">
-                <p class="footer__copyright">
-                    &copy; 2026 TechShop. Todos os direitos reservados.
-                </p>
-                <div class="footer__payment-methods">
-                    <span style="color: var(--color-gray-400); font-size: var(--text-sm)">Aceitamos:</span>
-                    <div class="footer__payment-icon">💳</div>
-                    <div class="footer__payment-icon">🏦</div>
-                    <div class="footer__payment-icon">📱</div>
-                </div>
-            </div>
-        </div>
-    </footer>
+				<div class="footer__column">
+					<h4 class="footer__column-title">Ajuda</h4>
+					<ul class="footer__links">
+						<li><a href="#" class="footer__link">FAQ</a></li>
+						<li><a href="#" class="footer__link">Envio e Entrega</a></li>
+						<li><a href="#" class="footer__link">Política de Devolução</a></li>
+						<li><a href="#" class="footer__link">Rastreamento</a></li>
+					</ul>
+				</div>
+
+				<div class="footer__column">
+					<h4 class="footer__column-title">Newsletter</h4>
+					<p class="footer__about">Receba ofertas exclusivas no seu e-mail</p>
+
+					<form class="footer__newsletter-form" id="newsletterForm">
+						<div class="form__group">
+							<input type="email" id="newsletterEmail" class="footer__newsletter-input"
+								placeholder="Seu e-mail" required />
+						</div>
+
+						<div class="form__group">
+							<div class="footer__terms"
+								style="display: flex; align-items: center; gap: 8px; margin: 10px 0; font-size: 13px;">
+								<input type="checkbox" id="newsletterTerms" required>
+								<label for="newsletterTerms" style="color: #ccc;">Aceito os termos</label>
+							</div>
+						</div>
+
+						<button type="submit" class="footer__newsletter-btn">
+							Inscrever
+						</button>
+
+						<div id="newsletterMessage" style="margin-top: 10px; font-size: 14px; font-weight: bold;"></div>
+					</form>
+				</div>
+			</div>
+
+			<div class="footer__bottom">
+				<p class="footer__copyright">
+					&copy; 2026 TechShop. Todos os direitos reservados.
+				</p>
+			</div>
+		</div>
+	</footer>
 	<script src="../js/modules/modal.js"></script>
-    <script src="../js/modules/form-validator.js"></script>
-    <script src="../js/modules/navigation.js"></script>
-    <script src="../js/modules/utils.js"></script>
-    <script src="../js/modules/products-gallery.js"></script>
-    <script src="../js/modules/handlers.js"></script>
-    <script src="../js/products.js"></script>
-    <script src="../js/app.js"></script>
+	<script src="../js/modules/form-validator.js"></script>
+	<script src="../js/modules/navigation.js"></script>
+	<script src="../js/modules/utils.js"></script>
+	<script src="../js/modules/products-gallery.js"></script>
+	<script src="../js/modules/handlers.js"></script>
+	<script src="../js/modules/carousel.js"></script>
+	<script src="../js/products.js"></script>
+	<script src="../js/app.js"></script>
 </body>
+
 </html>

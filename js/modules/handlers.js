@@ -1,61 +1,87 @@
 // ========================================
-// HANDLERS.JS - Versão Otimizada
+// HANDLERS.JS - Versão Robusta
 // ========================================
 
 function initCartHandlers() {
-    const cartBtn = document.querySelector("[data-cart-btn]");
     const drawer = document.getElementById("cartDrawer");
     const closeBtn = document.querySelector(".cart-drawer__close");
     const overlay = document.querySelector(".cart-drawer__overlay");
+    const cartBtn = document.querySelector("[data-cart-btn]");
 
-    // 1. Abrir Carrinho manualmente pelo ícone do Header
+    // Abrir manualmente pelo ícone do topo
     if (cartBtn && drawer) {
-        cartBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            drawer.classList.add("active");
-        });
+      cartBtn.onclick = (e) => {
+    e.preventDefault();
+
+    // 🔥 ATUALIZA O CARRINHO ANTES DE ABRIR
+    if (typeof updateCartUI === "function") {
+        updateCartUI();
     }
 
-    // 2. Fechar Carrinho
-    const closeCart = () => drawer && drawer.classList.remove("active");
+    drawer.classList.add("active");
+    document.body.classList.add("modal-open");
+};
+    }
+
+    // Fechar carrinho
+    const closeCart = () => {
+        if (drawer) {
+            drawer.classList.remove("active");
+            document.body.classList.remove("modal-open");
+        }
+    };
+
     if (closeBtn) closeBtn.onclick = closeCart;
     if (overlay) overlay.onclick = closeCart;
 
-    // 3. Lógica de Adicionar ao Carrinho
-  // No seu handlers.js, procure a parte do "click" e deixe assim:
-document.addEventListener("click", (e) => {
-    const btn = e.target.closest(".product-card__btn");
-
-    if (btn) {
-        // NÃO use e.preventDefault() aqui para não travar o onclick do HTML
+    // Lógica do botão de adicionar (Delegação de Evento)
+    document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".product-card__btn");
         
-        // 1. Efeito visual no botão
-        btn.disabled = true;
-        const originalText = btn.innerHTML;
-        btn.innerHTML = "✓ Adicionado!";
+        if (btn) {
+            // 1. CAPTURAR OS DADOS DO BOTÃO (Data Attributes)
+            const name = btn.dataset.name;
+            const price = btn.dataset.price;
+            const image = btn.dataset.image;
 
-        // 2. Mostrar o modal de sucesso (opcional)
-        if (window.modalSystem) {
-            const productName = btn.getAttribute('onclick')?.match(/'([^']+)'/)?.[1] || "Produto";
-            window.modalSystem.success({
-                title: "Adicionado!",
-                content: `<strong>${productName}</strong> foi para o carrinho.`,
-                actions: [{ label: "Continuar", variant: "primary", onClick: () => {} }]
-            });
+            console.log("Tentando adicionar:", name); // Para debug no F12
+
+            // 2. CHAMAR A FUNÇÃO DE ADICIONAR (Tentando os dois nomes possíveis)
+            if (typeof window.handleAddToCart === "function") {
+                window.handleAddToCart(name, price, image);
+            } else if (typeof window.addToCart === "function") {
+                window.addToCart(name, price, image);
+            } else {
+                console.error("ERRO: Nenhuma função de adicionar encontrada no app.js!");
+            }
+
+            // 3. EFEITO VISUAL NO BOTÃO
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "✓ Adicionado!";
+            btn.style.backgroundColor = "#28a745";
+            btn.style.color = "#fff";
+
+            // 4. ABRIR A GAVETA
+            if (drawer) {
+                setTimeout(() => {
+                    drawer.classList.add("active");
+                    document.body.classList.add("modal-open");
+                }, 200);
+            }
+
+            // Resetar o botão após 1.5s
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.backgroundColor = "";
+                btn.style.color = "";
+            }, 1500);
         }
-
-        setTimeout(() => {
-            btn.disabled = false;
-            btn.innerHTML = originalText;
-        }, 1500);
-    }
-});
+    });
 }
 
-// ... manter as outras funções (initLoginHandler, renderFeaturedProducts) iguais ...
-
-document.addEventListener("DOMContentLoaded", () => {
+// Inicialização única e segura
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCartHandlers);
+} else {
     initCartHandlers();
-    initLoginHandler();
-    renderFeaturedProducts();
-});
+}

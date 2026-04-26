@@ -24,6 +24,21 @@
 	margin: 0 auto;
 }
 
+.section__footer {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center;
+    width: 100% !important;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    
+    /* CRITICAL: Se estiver dentro de um Grid, isso faz ele ocupar a largura toda */
+    grid-column: 1 / -1; 
+    
+    /* Garante que não haja elementos flutuando ao lado */
+    clear: both; 
+}
+
 /* Grids */
 .offers__grid {
 	display: grid;
@@ -160,3 +175,212 @@
 	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 	gap: 1.5rem;
 }
+
+
+
+
+
+/*=========== SOBRE========= */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* O conteúdo principal cresce para ocupar o espaço vazio */
+main {
+    flex: 1 0 auto;
+}
+
+/* O footer mantém seu tamanho original no final */
+.footer {
+    flex-shrink: 0;
+}
+
+
+
+
+
+
+
+
+
+/* --- Seção de Equipe --- */
+.equipe__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.equipe__card {
+    text-align: center;
+}
+
+.equipe__img-wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ff6600; /* Use sua cor primária */
+}
+
+.equipe__img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.equipe__name {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.equipe__role {
+    color: #ff6600;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* --- Cards de Missão/Visão/Valores --- */
+.bg-light {
+    background-color: #f8f9fa;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card-modern {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* --- Timeline (Jornada) --- */
+.timeline-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: #ddd;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 3px solid #ddd;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.timeline-item.active .timeline-dot {
+    border-color: #ff6600;
+    background: #ff6600;
+}
+
+.timeline-content {
+    width: 45%;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.timeline-date {
+    width: 45%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: right;
+    padding-right: 30px;
+}
+
+/* Inverter o lado de cada item par da timeline para ficar alternado */
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-item:nth-child(even) .timeline-date {
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 0;
+}
+
+
+
+
+
+
+/* ==============Contatos============ */
+
+
+/* Estilos da Página de Contato */
+.contact__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Layout de duas colunas no desktop */
+    gap: 4rem;
+    margin-top: 3rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+.info__item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info__item i {
+    font-size: 1.5rem;
+    color: var(--primary-color, #ff6b35); /* Sua cor de destaque */
+}
+
